@@ -11,19 +11,23 @@
         <a href={base}>Blog</a>
     </div>
     <div class="nav-middle">
-        <FancyArrow
-            direction="left"
-            pathFill="var(--accent-1)"
-            pathOpacity="0.5"
-        />
+        <div class="fancy-arrow">
+            <FancyArrow
+                direction="left"
+                pathFill="var(--accent-1)"
+                pathOpacity="0.5"
+            />
+        </div>
         <a href={base}>
             <Logo width="2rem" height="2rem" pathFill="var(--accent-1)" />
         </a>
-        <FancyArrow
-            direction="right"
-            pathFill="var(--accent-1)"
-            pathOpacity="0.5"
-        />
+        <div class="fancy-arrow">
+            <FancyArrow
+                direction="right"
+                pathFill="var(--accent-1)"
+                pathOpacity="0.5"
+            />
+        </div>
     </div>
     <div class="nav-right">
         <RButton text="Start your journey" />
@@ -81,5 +85,43 @@
         flex-direction: row;
         align-items: center;
         gap: 1rem;
+    }
+
+    @media (min-width: 0rem) {
+        .fancy-arrow {
+            display: none;
+        }
+
+        .nav-right,
+        .nav-left {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    // ~800px
+    @media (min-width: 50rem) {
+        .fancy-arrow {
+            display: none;
+        }
+
+        .nav-right,
+        .nav-left {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    // ~1440px
+    @media (min-width: 90rem) {
+        .fancy-arrow {
+            display: block;
+        }
+
+        .nav-right,
+        .nav-left {
+            opacity: 1;
+            pointer-events: all;
+        }
     }
 </style>

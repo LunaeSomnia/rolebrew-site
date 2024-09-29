@@ -248,7 +248,6 @@
             flex-direction: column;
 
             & h1 {
-                font-size: 6rem;
                 text-align: center;
                 line-height: 6rem;
                 color: var(--light-1);
@@ -288,7 +287,6 @@
         position: absolute;
         width: 100vw;
         height: 54rem;
-        display: flex; /* Center items */
         justify-content: center;
         align-items: center;
         height: 100%;
@@ -367,5 +365,37 @@
                 rgba(73, 40, 255, 0.25) 0%,
                 rgba(77, 45, 255, 0) 91.5%
             );
+    }
+
+    @media (min-width: 0rem) {
+        .decorations {
+            display: none;
+        }
+
+        .hero-title h1 {
+            font-size: 4rem;
+        }
+    }
+
+    // ~800px
+    @media (min-width: 50rem) {
+        .decorations {
+            display: flex;
+        }
+
+        .hero-title h1 {
+            font-size: 5rem;
+        }
+    }
+
+    // ~1440px
+    @media (min-width: 90rem) {
+        .decorations {
+            display: flex;
+        }
+
+        .hero-title h1 {
+            font-size: 6rem;
+        }
     }
 </style>
