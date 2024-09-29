@@ -181,6 +181,10 @@
     });
 </script>
 
+<svelte:head>
+    <title>Rolebrew</title>
+</svelte:head>
+
 <div class="cover"></div>
 <div class="decorations">
     <div class="circle-decoration parallax-layer parallax-0 circle-1">
