@@ -23,7 +23,9 @@
 	"type": "module",
 	"dependencies": {
 		"@types/animejs": "^3.1.12",
+		"@types/gsap": "^3.0.0",
 		"animejs": "^3.2.2",
+		"gsap": "^3.12.5",
 		"scss": "^0.2.4"
 	}
 }
