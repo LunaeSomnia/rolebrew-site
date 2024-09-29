@@ -338,7 +338,6 @@
         );
         // animation: circleDecorationRotationAlt var(--rotation-speed) infinite
         //     linear;
-        filter: blur(1px);
     }
     .circle-5 {
         --rotation-speed: 120s;
@@ -349,7 +348,6 @@
         );
         // animation: circleDecorationRotationAlt var(--rotation-speed) infinite
         //     linear;
-        filter: blur(2px);
     }
 
     .gradient-decoration {
