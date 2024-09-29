@@ -81,10 +81,4 @@
         align-items: center;
         gap: 1rem;
     }
-
-    .colored {
-        width: 1rem;
-        height: 1rem;
-        background-color: red;
-    }
 </style>
