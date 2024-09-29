@@ -1,6 +1,8 @@
+$base-path: '/rolebrew-site';
+
 @font-face {
     font-family: 'BluuNext';
-    src: url('fonts/BluuNext-Bold.otf') format('opentype');
+    src: url('#{$base-path}/fonts/BluuNext-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
