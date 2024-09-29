@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from "$app/paths";
     import FancyArrow from "$lib/svgs/FancyArrow.svelte";
     import Logo from "$lib/svgs/Logo.svelte";
     import RButton from "./RButton.svelte";
@@ -6,8 +7,8 @@
 
 <nav>
     <div class="nav-left">
-        <a href="/">About</a>
-        <a href="/">Blog</a>
+        <a href={base}>About</a>
+        <a href={base}>Blog</a>
     </div>
     <div class="nav-middle">
         <FancyArrow
@@ -15,7 +16,7 @@
             pathFill="var(--accent-1)"
             pathOpacity="0.5"
         />
-        <a href="/">
+        <a href={base}>
             <Logo width="2rem" height="2rem" pathFill="var(--accent-1)" />
         </a>
         <FancyArrow

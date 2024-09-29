@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { base } from "$app/paths";
+
     export let text = "button";
     export let href = "";
 </script>
 
-<a {href}>
+<a href="{base}{href}">
     {text}
 </a>
 
