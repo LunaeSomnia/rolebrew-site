@@ -5,7 +5,7 @@
     import anime from "animejs";
     import gsap from "$lib/preloadGsap";
     import { onMount } from "svelte";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import ScrollTrigger from "gsap/ScrollTrigger";
     import { setTheme } from "$lib/globalColors";
     import Feature from "$lib/components/Feature.svelte";
     import ScrollTriggeredDiv from "$lib/ScrollTriggeredDiv.svelte";
