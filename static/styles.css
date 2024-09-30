@@ -4,17 +4,18 @@
   font-weight: bold;
   font-style: normal;
 }
+
 :root {
   --light-1: #f4daba;
-  --light-1-0: #f4daba00;
+  --light-1-transparent: #f4daba00;
   --light-2: #DEBD95;
   --dark-1: #2f2d2b;
-  --dark-1-0: #2f2d2b00;
+  --dark-1-transparent: #2f2d2b00;
   --dark-2: #393835;
   --accent-1: #ffb230;
-  --accent-1-0: #ffb23000;
+  --accent-1-transparent: #ffb23000;
   --accent-2: #b97d19;
-  --accent-2-0: #b97d1900;
+  --accent-2-transparent: #b97d1900;
   font-size: 16px;
   width: 100vw;
   height: 100vh;
@@ -33,20 +34,20 @@
 
 body {
   --light-1: #f4daba;
-  --light-1-0: #f4daba00;
+  --light-1-transparent: #f4daba00;
   --light-2: #DEBD95;
   --dark-1: #2f2d2b;
-  --dark-1-0: #2f2d2b00;
+  --dark-1-transparent: #2f2d2b00;
   --dark-2: #393835;
   --accent-1: #ffb230;
-  --accent-1-0: #ffb23000;
+  --accent-1-transparent: #ffb23000;
   --accent-2: #b97d19;
-  --accent-2-0: #b97d1900;
+  --accent-2-transparent: #b97d1900;
   --accent-color: var(--accent-1);
-  --accent-color-0: var(--accent-1-0);
+  --accent-color-transparent: var(--accent-1-transparent);
   --background-color: var(--dark-1);
   --background-color-2: var(--dark-2);
-  --background-color-0: var(--dark-1-0);
+  --background-color-0: var(--dark-1-transparent);
   --background-color-alt: var(--light-1);
   --text-color: var(--light-1);
   width: 100vw;

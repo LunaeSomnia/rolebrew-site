@@ -14,7 +14,7 @@
         background-color: color-mix(
             in srgb,
             var(--accent-color) 15%,
-            var(--accent-color-0)
+            var(--accent-color-transparent)
         );
     }
 </style>
