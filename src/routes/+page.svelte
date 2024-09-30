@@ -507,6 +507,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 4rem;
+        background: linear-gradient(0deg, #2f2d2b 0%, rgba(47, 45, 43, 0) 100%);
 
         .footer-section-container {
             width: 100%;
