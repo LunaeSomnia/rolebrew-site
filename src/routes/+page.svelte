@@ -98,12 +98,12 @@
     function enterLightTheme() {
         anime({
             targets: "body",
-            backgroundColor: "#f4daba",
+            backgroundColor: "#DEBD95",
             backgroundImage: "none",
             duration: 1000,
         });
         gsap.to(".gradient-decoration-fade", {
-            background: "linear-gradient(0deg,#f4daba 0%,#f4daba00 50%)",
+            background: "linear-gradient(0deg,#DEBD95 0%,#DEBD9500 50%)",
             duration: 1,
         });
         anime({
@@ -112,7 +112,7 @@
             duration: 100,
         });
         gsap.to(".features", {
-            backgroundColor: "#f4daba",
+            backgroundColor: "#DEBD95",
             duration: 1,
         });
         setTheme("light");
@@ -451,7 +451,6 @@
 
             & h1 {
                 text-align: center;
-                line-height: 6rem;
                 color: var(--light-1);
             }
 
@@ -638,7 +637,8 @@
         }
 
         .hero-title h1 {
-            font-size: 4rem;
+            font-size: 2.5rem;
+            line-height: 3.5rem;
         }
     }
 
@@ -650,6 +650,7 @@
 
         .hero-title h1 {
             font-size: 5rem;
+            line-height: 5rem;
         }
     }
 
@@ -661,6 +662,7 @@
 
         .hero-title h1 {
             font-size: 6rem;
+            line-height: 6rem;
         }
     }
 </style>

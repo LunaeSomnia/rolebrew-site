@@ -9,10 +9,8 @@
     export let description = "Feature description goes here.";
 </script>
 
-<div class="feature">
-    {#if !alt}
-        <div class="img-placeholder"></div>
-    {/if}
+<div class="feature {alt ? 'alt' : ''}">
+    <div class="img-placeholder"></div>
     <div class="feature-description">
         <div class="feature-header m-3">
             <Tag padding="0.5rem">
@@ -23,33 +21,28 @@
         <p class="subtitle m-4">{subtitle}</p>
         <p>{@html description}</p>
     </div>
-    {#if alt}
-        <div class="img-placeholder"></div>
-    {/if}
+    <div class="img-placeholder alt"></div>
 </div>
 
 <style lang="scss">
     .feature {
+        position: relative;
         width: 100%;
-        min-height: 32rem;
-        height: 32rem;
-
         display: flex;
-        flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 4rem;
     }
 
     .img-placeholder {
+        position: relative;
         width: 24rem;
         min-width: 24rem;
-        height: 100%;
         background-color: var(--background-color-2);
         border-radius: 0.5rem;
     }
 
     .feature-description {
+        position: relative;
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -65,5 +58,47 @@
         flex-direction: row;
         gap: 1rem;
         align-items: center;
+    }
+
+    @media (min-width: 0rem) {
+        .feature {
+            flex-direction: column;
+            height: fit-content;
+            gap: 2rem;
+        }
+
+        .img-placeholder {
+            height: 30rem;
+            display: none;
+
+            &.alt {
+                display: block;
+            }
+        }
+    }
+
+    @media (min-width: 50rem) {
+        .feature {
+            flex-direction: row;
+            min-height: 32rem;
+            height: 32rem;
+            gap: 4rem;
+        }
+
+        .feature .img-placeholder {
+            height: 100%;
+            display: block;
+
+            &.alt {
+                display: none;
+            }
+        }
+        .feature.alt .img-placeholder {
+            display: none;
+
+            &.alt {
+                display: block;
+            }
+        }
     }
 </style>
