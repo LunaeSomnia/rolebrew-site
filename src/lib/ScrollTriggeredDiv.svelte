@@ -1,10 +1,7 @@
 <script lang="ts">
-    import gsap from "$lib/preloadGsap";
     import anime from "animejs";
     import { onMount } from "svelte";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-    let scrollTrigerredDiv;
 
     export let uniqueId = "id1";
     export let translateDirection: "right" | "left" = "right";
@@ -51,7 +48,7 @@
     });
 </script>
 
-<div bind:this={scrollTrigerredDiv} class="scroll-triggered {uniqueId}">
+<div class="scroll-triggered {uniqueId}">
     <slot />
 </div>
 
