@@ -29,6 +29,7 @@
   position: relative;
   scroll-behavior: smooth;
   font-family: "Manrope", sans-serif;
+  color: var(--text-color);
 }
 
 body {
