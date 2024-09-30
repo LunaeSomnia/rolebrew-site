@@ -4,7 +4,6 @@
   font-weight: bold;
   font-style: normal;
 }
-
 :root {
   --light-1: #f4daba;
   --light-1-transparent: #f4daba00;
@@ -53,6 +52,10 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--dark-1);
+  background-image: url("noises/bg-01.webp");
+  background-size: 1024px 1024px;
+  background-repeat: repeat;
+  background-blend-mode: color-dodge, normal;
   color: var(--text-color);
 }
 
