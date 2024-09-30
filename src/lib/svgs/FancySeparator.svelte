@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let pathFill: string = "#FFB230";
+    export let pathFill: string = "var(--accent-color)";
     export let pathOpacity: string = "0.5";
 </script>
 
@@ -58,9 +58,10 @@
         gap: 0;
         align-items: center;
         height: 2.625rem;
+        width: 100%;
     }
     .horizontal-line {
-        width: calc(50% - 2.625rem);
+        width: 50%;
         height: 0.625rem;
 
         & > path {

@@ -8,7 +8,4 @@
 </div>
 
 <style lang="scss">
-    .page-wrapper {
-        padding-top: var(--navbar-height);
-    }
 </style>

@@ -6,14 +6,20 @@
 }
 :root {
   --light-1: #f4daba;
-  --light-2: #debd95;
+  --light-1-0: #f4daba00;
+  --light-2: #DEBD95;
   --dark-1: #2f2d2b;
   --dark-1-0: #2f2d2b00;
   --dark-2: #393835;
   --accent-1: #ffb230;
+  --accent-1-0: #ffb23000;
   --accent-2: #b97d19;
+  --accent-2-0: #b97d1900;
   --navbar-height: 4rem;
+  --hero-height: 54rem;
   font-size: 16px;
+  width: 100vw;
+  height: 100vh;
 }
 
 * {
@@ -28,14 +34,17 @@
 }
 
 body {
+  --accent-color: var(--accent-1);
+  --accent-color-0: var(--accent-1-0);
+  --background-color: var(--dark-1);
+  --background-color-2: var(--dark-2);
+  --background-color-0: var(--dark-1-0);
+  --background-color-alt: var(--light-1);
+  --text-color: var(--light-1);
   width: 100vw;
   height: 100vh;
   background-color: var(--dark-1);
-  background-image: url("noises/bg-01.webp");
-  background-size: 1024px 1024px;
-  background-repeat: repeat;
-  background-blend-mode: color-dodge, normal;
-  color: var(--light-1);
+  color: var(--text-color);
 }
 
 h1,
@@ -83,7 +92,7 @@ h6 {
   flex-direction: column;
   width: 100%;
   transform-style: preserve-3d;
-  perspective: 1.5rem;
+  perspective: 2rem;
   perspective-origin: center;
 }
 

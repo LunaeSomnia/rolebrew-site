@@ -5,7 +5,7 @@
     import RButton from "./RButton.svelte";
 </script>
 
-<nav>
+<nav class="nav-bar">
     <div class="nav-left">
         <a href={base}>About</a>
         <a href={base}>Blog</a>
@@ -14,17 +14,17 @@
         <div class="fancy-arrow">
             <FancyArrow
                 direction="left"
-                pathFill="var(--accent-1)"
+                pathFill="var(--accent-color)"
                 pathOpacity="0.5"
             />
         </div>
         <a href={base}>
-            <Logo width="2rem" height="2rem" pathFill="var(--accent-1)" />
+            <Logo width="2rem" height="2rem" pathFill="var(--accent-color)" />
         </a>
         <div class="fancy-arrow">
             <FancyArrow
                 direction="right"
-                pathFill="var(--accent-1)"
+                pathFill="var(--accent-color)"
                 pathOpacity="0.5"
             />
         </div>
@@ -35,7 +35,7 @@
 </nav>
 
 <style lang="scss">
-    nav {
+    .nav-bar {
         position: absolute;
         width: 100vw;
         height: var(--navbar-height);
@@ -57,16 +57,20 @@
             height: 100%;
             background: linear-gradient(
                 to bottom,
-                var(--dark-1) 0%,
-                var(--dark-1-0) 100%
+                var(--background-color) 0%,
+                var(--background-color-0) 100%
             );
             z-index: -1;
         }
     }
 
+    :global(.nav-bar *) {
+        transition: all 250ms ease-in-out;
+    }
+
     a {
         font-weight: bold;
-        color: var(--light-1);
+        color: var(--text-color);
         text-decoration: none;
     }
 
