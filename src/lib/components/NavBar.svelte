@@ -38,7 +38,7 @@
     .nav-bar {
         position: absolute;
         width: 100vw;
-        height: var(--navbar-height);
+        height: 4rem;
 
         display: flex;
         flex-direction: row;

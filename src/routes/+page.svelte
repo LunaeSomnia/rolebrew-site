@@ -433,8 +433,8 @@
         position: relative;
         width: 100vw;
 
-        min-height: var(--hero-height);
-        height: var(--hero-height);
+        min-height: 54rem;
+        height: 54rem;
 
         display: flex;
         flex-direction: column;
