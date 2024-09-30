@@ -3,9 +3,8 @@
     import FancyCircle from "$lib/svgs/FancyCircle.svelte";
     import FancySeparator from "$lib/svgs/FancySeparator.svelte";
     import anime from "animejs";
-    import gsap from "$lib/preloadGsap";
+    import { gsap, ScrollTrigger } from "$lib/preloadGsap";
     import { onMount } from "svelte";
-    import ScrollTrigger from "gsap/ScrollTrigger";
     import { setTheme } from "$lib/globalColors";
     import Feature from "$lib/components/Feature.svelte";
     import ScrollTriggeredDiv from "$lib/ScrollTriggeredDiv.svelte";

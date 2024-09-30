@@ -1,7 +1,7 @@
 <script lang="ts">
     import anime from "animejs";
     import { onMount } from "svelte";
-    import ScrollTrigger from "gsap/ScrollTrigger";
+    import { ScrollTrigger } from "$lib/preloadGsap";
 
     export let uniqueId = "id1";
     export let translateDirection: "right" | "left" = "right";
