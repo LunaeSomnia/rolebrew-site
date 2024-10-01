@@ -35,10 +35,10 @@
 
     .img-placeholder {
         position: relative;
-        width: 24rem;
-        min-width: 24rem;
+
         background-color: var(--background-color-2);
         border-radius: 0.5rem;
+        aspect-ratio: 0.618;
     }
 
     .feature-description {
@@ -68,8 +68,8 @@
         }
 
         .img-placeholder {
-            height: 30rem;
             display: none;
+            width: 100%;
 
             &.alt {
                 display: block;
@@ -80,14 +80,14 @@
     @media (min-width: 50rem) {
         .feature {
             flex-direction: row;
-            min-height: 32rem;
-            height: 32rem;
             gap: 4rem;
         }
 
         .feature .img-placeholder {
-            height: 100%;
+            // height: 100%;
             display: block;
+            width: 24rem;
+            min-width: 24rem;
 
             &.alt {
                 display: none;
