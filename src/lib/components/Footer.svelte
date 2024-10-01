@@ -68,7 +68,6 @@
             width: 100%;
             display: flex;
             align-items: flex-start;
-            gap: 2rem;
         }
 
         .footer-section {
@@ -92,6 +91,7 @@
     @media (min-width: 0rem) {
         .footer-section-container {
             flex-direction: column;
+            gap: 4rem;
         }
 
         .footer-section {
@@ -102,6 +102,7 @@
     @media (min-width: 50rem) {
         .footer-section-container {
             flex-direction: row;
+            gap: 2rem;
         }
         .footer-section {
             flex-direction: column;
