@@ -62,7 +62,7 @@
 </svelte:head>
 
 <div class="cover"></div>
-<div class="decorations-bg parallax-layer parallax-5"></div>
+<div class="hero-bg parallax-layer parallax-5"></div>
 <div class="decorations">
     <div class="circle-decoration parallax-layer parallax-0 circle-1">
         <FancyCircle pathOpacity="1" />
@@ -295,15 +295,15 @@
         // overflow-y: hidden;
     }
 
-    .decorations-bg {
+    .hero-bg {
         position: absolute;
         width: 100vw;
-        height: 54rem;
-        top: 0;
+        height: 60rem;
+        top: -10rem;
         z-index: -1;
 
         background-color: var(--dark-1);
-        background-image: url("noises/bg-01.webp");
+        background-image: url("/noises/bg-01.webp");
         background-size: 1024px 1024px;
         background-repeat: repeat;
         background-blend-mode: color-dodge, normal;
