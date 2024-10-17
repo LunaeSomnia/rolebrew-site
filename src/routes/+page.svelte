@@ -2,7 +2,6 @@
     import RButton from "$lib/components/RButton.svelte";
     import FancyCircle from "$lib/svgs/FancyCircle.svelte";
     import FancySeparator from "$lib/svgs/FancySeparator.svelte";
-    import anime from "animejs";
     import { gsap, ScrollTrigger } from "$lib/preloadGsap";
     import { onMount } from "svelte";
     import { setTheme } from "$lib/globalColors";
@@ -10,263 +9,69 @@
     import ScrollTriggeredDiv from "$lib/ScrollTriggeredDiv.svelte";
     import Icon from "$lib/Icon.svelte";
     import { IconType } from "$lib/icon";
-    import Logo from "$lib/svgs/Logo.svelte";
-    import { base } from "$app/paths";
     import Footer from "$lib/components/Footer.svelte";
-
-    // Circle Startup Animation
-    function addLandingCircleAnimation(
-        element: string,
-        offset: number, //rems
-        timeScale: number,
-        zOffset: string,
-        delayIndex: number,
-    ) {
-        anime({
-            targets: element,
-            duration: 0,
-            translateY: offset * timeScale * timeScale + "rem",
-            translateZ: zOffset,
-            scale: timeScale,
-            easing: "linear",
-            opacity: 0,
-        });
-
-        var sign = delayIndex % 2 == 0 ? 1 : -1;
-
-        anime({
-            targets: element,
-            duration: 1500 * timeScale * timeScale,
-            translateY: "-" + offset,
-            translateZ: zOffset,
-            easing: "easeOutExpo",
-            scale: timeScale,
-            delay: delayIndex * 500,
-            rotate: -15 * timeScale * sign + "deg",
-            opacity: 1,
-            complete: function (anim) {
-                anime({
-                    targets: element,
-                    rotate: 0,
-                    easing: "cubicBezier(0.440, 0.015, 0.570, 0.575)",
-                    duration: 2000 * timeScale,
-                    complete: function (anim) {
-                        anime({
-                            targets: element,
-                            loop: true,
-                            rotate: 360 * sign + "deg",
-                            easing: "linear",
-                            duration: 30000 * timeScale * timeScale,
-                        });
-                    },
-                });
-            },
-        });
-    }
-
-    // Title Roulette
-    function addRouletteElement(
-        timeline: anime.AnimeTimelineInstance,
-        element: string,
-    ) {
-        anime({
-            targets: element,
-            translateY: "-1rem",
-            opacity: 0,
-            duration: 600,
-        });
-        timeline
-            .add({
-                targets: element,
-                translateY: "0rem",
-                opacity: 1,
-                duration: 1000,
-            })
-            .add({
-                targets: element,
-                translateY: "0rem",
-                duration: 2000,
-                opacity: 1,
-            })
-            .add({
-                targets: element,
-                translateY: "-1rem",
-                opacity: 0,
-                duration: 600,
-            });
-    }
-
-    function enterLightTheme() {
-        anime({
-            targets: "body",
-            backgroundColor: "#DEBD95",
-            backgroundImage: "none",
-            duration: 1000,
-        });
-        gsap.to(".gradient-decoration-fade", {
-            background: "linear-gradient(0deg,#DEBD95 0%,#DEBD9500 50%)",
-            duration: 1,
-        });
-        anime({
-            targets: ".circle-decoration",
-            opacity: 0,
-            duration: 100,
-        });
-        gsap.to(".features", {
-            backgroundColor: "#DEBD95",
-            duration: 1,
-        });
-        setTheme("light");
-    }
-
-    function enterDarkTheme() {
-        anime({
-            targets: "body",
-            backgroundColor: "#2f2d2b",
-            backgroundImage: "none",
-            duration: 1000,
-        });
-        gsap.to(".gradient-decoration-fade", {
-            background: "linear-gradient(0deg,#2f2d2b 0%,#2f2d2b00 50%)",
-            duration: 1,
-        });
-        anime({
-            targets: ".circle-decoration",
-            opacity: 1,
-            duration: 100,
-        });
-        gsap.to(".features", {
-            backgroundColor: "#2f2d2b",
-            duration: 1,
-        });
-        setTheme("dark");
-    }
+    import {
+    addLandingCircleAnimation,
+        enterDarkTheme,
+        enterLightTheme,
+        landingCTAAnimation,
+        landingInit,
+        landingSubtitleAnimation,
+        landingTitleAnimation,
+        addRouletteElement,
+    } from "$lib/landingAnimations";
 
     onMount(() => {
-        var roulettetl = anime.timeline({
-            easing: "easeOutExpo",
-            loop: true,
-        });
+        const roulettetl = gsap
+        .timeline({
+            repeat: -1,
+            ease: "expo.out",
+            paused: true,
+        })
+        .add(addRouletteElement(".roulette-element.index-1"), "+=2.5")
+        .add(addRouletteElement(".roulette-element.index-2"), "+=2.5")
+        .add(addRouletteElement(".roulette-element.index-3"), "+=2.5")
+        .add(addRouletteElement(".roulette-element.index-4"), "+=2.5")
 
         // Landing
-        anime({
-            targets: ".cover",
-            opacity: 0,
-            duration: 5000,
-        });
+        gsap.timeline()
+            .set(".cover", { opacity: 0, duration: 5 })
+            .add(landingInit())
+            .add(() => {roulettetl.play();})
+            .add(() => landingTitleAnimation(), "+=1")
+            .add(() => landingSubtitleAnimation(), "+=1")
+            .add(() => landingCTAAnimation(), "+=1")
 
-        var landingtTitletl = anime.timeline({
-            easing: "easeOutExpo",
-            duration: 1000,
-        });
-
-        var landingtSubtitletl = anime.timeline({
-            easing: "easeOutExpo",
-            duration: 1000,
-        });
-
-        var landingtCtatl = anime.timeline({
-            easing: "easeOutExpo",
-            duration: 1000,
-        });
-
-        landingtTitletl
-            .add({
-                targets: ".hero-title",
-                translateY: "-10rem",
-                opacity: 0,
-                duration: 0,
-            })
-            .add({
-                targets: ".hero-title",
-                easing: "easeOutQuad",
-                translateY: "0rem",
-                opacity: 1,
-                duration: 1000,
-                complete: function (anim) {
-                    roulettetl.play();
-                },
-            });
-
-        landingtSubtitletl
-            .add({
-                targets: ".hero-subtitle",
-                translateY: "-5rem",
-                opacity: 0,
-                duration: 0,
-            })
-            .add({
-                targets: ".hero-subtitle",
-                easing: "easeOutQuad",
-                translateY: "0rem",
-                opacity: 1,
-                duration: 1000,
-                delay: 1000,
-            });
-
-        landingtCtatl
-            .add({
-                targets: ".hero-cta",
-                translateY: "-5rem",
-                opacity: 0,
-                duration: 0,
-            })
-            .add({
-                targets: ".hero-cta",
-                easing: "easeOutQuad",
-                translateY: "0rem",
-                opacity: 1,
-                duration: 1000,
-                delay: 2000,
-            });
-
+        // Circle Animations
         addLandingCircleAnimation(".circle-1", 20, 1, "-1rem", 5);
         addLandingCircleAnimation(".circle-2", 20, 1.5, "-2rem", 4);
         addLandingCircleAnimation(".circle-3", 20, 2, "-3rem", 3);
         addLandingCircleAnimation(".circle-4", 20, 2.5, "-4rem", 2);
         addLandingCircleAnimation(".circle-5", 20, 3, "-5rem", 1);
 
-        addRouletteElement(roulettetl, ".roulette-element.index-1");
-        addRouletteElement(roulettetl, ".roulette-element.index-2");
-        addRouletteElement(roulettetl, ".roulette-element.index-3");
-        addRouletteElement(roulettetl, ".roulette-element.index-4");
-
-        // Gradient decor
-
-        roulettetl.pause();
 
         // Scroll Triggers
         const featureSection = document.querySelector(".features");
 
         ScrollTrigger.create({
             scroller: ".page-wrapper",
-            trigger: featureSection, // The section that will trigger the background color change
-            start: "top center", // When the top of the feature section reaches the center of the viewport
-            end: "top center", // When the bottom of the feature section reaches the center of the viewport
+            trigger: featureSection,
+            start: "top center",
+            end: "top center",
             onUpdate: (self) => {
-                if (self.direction > 0) {
-                    // going down
-                    enterLightTheme();
-                } else {
-                    // going up
-                    enterDarkTheme();
-                }
+                if (self.direction > 0) enterLightTheme();
+                else enterDarkTheme();
             },
         });
 
         ScrollTrigger.create({
             scroller: ".page-wrapper",
-            trigger: featureSection, // The section that will trigger the background color change
-            start: "bottom center", // When the top of the feature section reaches the center of the viewport
-            end: "bottom center", // When the bottom of the feature section reaches the center of the viewport
+            trigger: featureSection,
+            start: "bottom center",
+            end: "bottom center",
             onUpdate: (self) => {
-                if (self.direction > 0) {
-                    // going down
-                    enterDarkTheme();
-                } else {
-                    // going up
-                    enterLightTheme();
-                }
+                if (self.direction > 0) enterDarkTheme();
+                else enterLightTheme();
             },
         });
     });
@@ -313,20 +118,20 @@
 </section>
 <section id="landing-trigger-1" class="features">
     <FancySeparator />
-    <ScrollTriggeredDiv uniqueId="section-header-1">
+    <ScrollTriggeredDiv uniqueId="section-header-1" disableOnExit={true}>
         <div class="section-header">
             <Icon icon={IconType.Star} color="var(--accent-color)" />
             <h1>All of your favourite stuff right at your reach</h1>
         </div>
     </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-1">
+    <ScrollTriggeredDiv uniqueId="feature-1" disableOnExit={true}>
         <Feature
             title="Compendium Explorer"
             subtitle="Every rule, spell, and monster. All in one place."
             description="No more flipping through pages or opening multiple tabs. With our built-in Pathfinder 2e compendium, quickly find detailed information on classes, races, spells, monsters, and more. Everything you need for your game is just a search away."
         />
     </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-2" translateDirection="left">
+    <ScrollTriggeredDiv uniqueId="feature-2"  disableOnExit={true} translateDirection="left">
         <Feature
             alt={true}
             title="Character Creator"
@@ -334,14 +139,14 @@
             description="Create and customize your perfect Pathfinder character with our intuitive character creator. Choose your ancestry, class, skills, and feats with ease, and fine-tune every stat to fit your playstyle. Whether you're a seasoned pro or new to the game, building your hero has never been this easy."
         />
     </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-3">
+    <ScrollTriggeredDiv uniqueId="feature-3" disableOnExit={true}>
         <Feature
             title="Battle Simulator"
             subtitle="Prepare for every encounter."
             description="Test your character's mettle with our battle simulator. Practice different combat strategies, experiment with new abilities, or see how your party might fare against tough monsters. Perfect for preparing ahead of your next big session!"
         />
     </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-4" translateDirection="left">
+    <ScrollTriggeredDiv uniqueId="feature-4"  disableOnExit={true} translateDirection="left">
         <Feature
             alt={true}
             title="Stat Calculator"
@@ -354,13 +159,13 @@
 <section class="try-now">
     <div class="gradient-decoration-color flip"></div>
     <div class="gradient-decoration-fade flip"></div>
-    <ScrollTriggeredDiv uniqueId="section-header-2">
+    <ScrollTriggeredDiv uniqueId="section-header-2" disableOnExit={true}>
         <div class="section-header">
             <Icon icon={IconType.Star} color="var(--accent-color)" />
             <h1>What are you waiting for?</h1>
         </div>
     </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="section-button-1" translateDirection="left">
+    <ScrollTriggeredDiv uniqueId="section-button-1" disableOnExit={true} translateDirection="left">
         <RButton text="Start your journey" />
     </ScrollTriggeredDiv>
 </section>
