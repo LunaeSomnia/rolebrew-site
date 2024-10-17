@@ -4,7 +4,6 @@
     import FancySeparator from "$lib/svgs/FancySeparator.svelte";
     import { gsap, ScrollTrigger } from "$lib/preloadGsap";
     import { onMount } from "svelte";
-    import { setTheme } from "$lib/globalColors";
     import Feature from "$lib/components/Feature.svelte";
     import ScrollTriggeredDiv from "$lib/ScrollTriggeredDiv.svelte";
     import Icon from "$lib/Icon.svelte";
@@ -12,8 +11,6 @@
     import Footer from "$lib/components/Footer.svelte";
     import {
         addLandingCircleAnimation,
-        enterDarkTheme,
-        enterLightTheme,
         landingCTAAnimation,
         landingInit,
         landingSubtitleAnimation,
@@ -57,30 +54,6 @@
         addLandingCircleAnimation(".circle-4", 20, 2.5, "-4rem", 2);
         addLandingCircleAnimation(".circle-5", 20, 3, "-5rem", 1);
 
-        // Scroll Triggers
-        const featureSection = document.querySelector(".features");
-
-        ScrollTrigger.create({
-            scroller: ".page-wrapper",
-            trigger: featureSection,
-            start: "top center",
-            end: "top center",
-            onUpdate: (self) => {
-                if (self.direction > 0) enterLightTheme();
-                else enterDarkTheme();
-            },
-        });
-
-        ScrollTrigger.create({
-            scroller: ".page-wrapper",
-            trigger: featureSection,
-            start: "bottom center",
-            end: "bottom center",
-            onUpdate: (self) => {
-                if (self.direction > 0) enterDarkTheme();
-                else enterLightTheme();
-            },
-        });
     });
 </script>
 
@@ -89,6 +62,7 @@
 </svelte:head>
 
 <div class="cover"></div>
+<div class="decorations-bg parallax-layer parallax-5"></div>
 <div class="decorations">
     <div class="circle-decoration parallax-layer parallax-0 circle-1">
         <FancyCircle pathOpacity="1" />
@@ -319,6 +293,20 @@
         z-index: -1;
         pointer-events: none;
         // overflow-y: hidden;
+    }
+
+    .decorations-bg {
+        position: absolute;
+        width: 100vw;
+        height: 54rem;
+        top: 0;
+        z-index: -1;
+
+        background-color: var(--dark-1);
+        background-image: url("noises/bg-01.webp");
+        background-size: 1024px 1024px;
+        background-repeat: repeat;
+        background-blend-mode: color-dodge, normal;
     }
 
     .circle-decoration {

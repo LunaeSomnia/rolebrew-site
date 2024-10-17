@@ -84,7 +84,11 @@
         }
 
         .feature .feature-description {
-            max-width: 60ch;
+            width: 50%;
+
+            & > p {
+                max-width: 60ch;
+            }
         }
 
         .feature .img-placeholder {
