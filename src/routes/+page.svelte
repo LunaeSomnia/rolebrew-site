@@ -17,6 +17,7 @@
         landingTitleAnimation,
         addRouletteElement,
     } from "$lib/landingAnimations";
+    import { base } from "$app/paths";
 
     onMount(() => {
         const roulettetl = gsap
@@ -59,6 +60,7 @@
 
 <svelte:head>
     <title>Rolebrew</title>
+    <link rel="preload" href="{base}/noises/bg-01.webp" as="image"/>
 </svelte:head>
 
 <div class="cover"></div>
@@ -306,7 +308,7 @@
         background-image: url("/noises/bg-01.webp");
         background-size: 1024px 1024px;
         background-repeat: repeat;
-        background-blend-mode: color-dodge, normal;
+        background-blend-mode: color-dodge;
     }
 
     .circle-decoration {
