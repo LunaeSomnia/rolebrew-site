@@ -50,6 +50,8 @@ body {
   --background-color-0: var(--dark-1-transparent);
   --background-color-alt: var(--light-1);
   --text-color: var(--light-1);
+  --max-content-width: 80rem;
+  --sidebar-width: 16rem;
   width: 100vw;
   height: 100vh;
   background-color: var(--dark-1);
@@ -94,6 +96,10 @@ h6 {
 
 .m-5 {
   margin-bottom: 4rem;
+}
+
+.max-width-wrapper {
+  width: 100%;
 }
 
 /* Parallax */
@@ -150,6 +156,18 @@ h6 {
 .parallax-5 {
   transform: translateZ(-6rem) scale(4);
   z-index: 5;
+}
+
+@media (min-width: 0rem) {
+  .max-width-wrapper {
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 84rem) {
+  .max-width-wrapper {
+    padding: 0;
+    max-width: var(--max-content-width);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

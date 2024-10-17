@@ -30,7 +30,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .img-placeholder {
@@ -81,6 +81,10 @@
         .feature {
             flex-direction: row;
             gap: 4rem;
+        }
+
+        .feature .feature-description {
+            max-width: 60ch;
         }
 
         .feature .img-placeholder {

@@ -6,46 +6,46 @@
 </script>
 
 <nav class="nav-bar">
-    <div class="nav-left">
-        <a href={base}>About</a>
-        <a href={base}>Blog</a>
-    </div>
-    <div class="nav-middle">
-        <div class="fancy-arrow">
-            <FancyArrow
-                direction="left"
-                pathFill="var(--accent-color)"
-                pathOpacity="0.5"
-            />
-        </div>
-        <a href={base}>
-            <Logo width="2rem" height="2rem" pathFill="var(--accent-color)" />
-        </a>
-        <div class="fancy-arrow">
-            <FancyArrow
-                direction="right"
-                pathFill="var(--accent-color)"
-                pathOpacity="0.5"
-            />
-        </div>
-    </div>
-    <div class="nav-right">
-        <RButton text="Start your journey" />
+    <div class="max-width-wrapper">
+        <nav class="nav-left">
+            <a href={base}>About</a>
+            <a href={base}>Blog</a>
+        </nav>
+        <nav class="nav-middle">
+            <div class="fancy-arrow">
+                <FancyArrow
+                    direction="left"
+                    pathFill="var(--accent-color)"
+                    pathOpacity="0.5"
+                />
+            </div>
+            <a href={base}>
+                <Logo width="2rem" height="2rem" pathFill="var(--accent-color)" />
+            </a>
+            <div class="fancy-arrow">
+                <FancyArrow
+                    direction="right"
+                    pathFill="var(--accent-color)"
+                    pathOpacity="0.5"
+                />
+            </div>
+        </nav>
+        <nav class="nav-right">
+            <RButton text="Start your journey" />
+        </nav>
     </div>
 </nav>
 
 <style lang="scss">
+
     .nav-bar {
         position: absolute;
         width: 100vw;
         height: 4rem;
 
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-        padding: 1rem 4rem;
+        display: grid;
+        place-items: center;
+        
         z-index: 0;
 
         &:before {
@@ -62,6 +62,14 @@
             );
             z-index: -1;
         }
+    }
+
+    .max-width-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 4rem;
     }
 
     :global(.nav-bar *) {

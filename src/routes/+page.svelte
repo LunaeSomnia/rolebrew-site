@@ -11,7 +11,7 @@
     import { IconType } from "$lib/icon";
     import Footer from "$lib/components/Footer.svelte";
     import {
-    addLandingCircleAnimation,
+        addLandingCircleAnimation,
         enterDarkTheme,
         enterLightTheme,
         landingCTAAnimation,
@@ -23,30 +23,32 @@
 
     onMount(() => {
         const roulettetl = gsap
-        .timeline({
-            repeat: -1,
-            ease: "expo.out",
-            paused: true,
-            delay: 1,
-        })
-        .add(addRouletteElement(".roulette-element.index-1"))
-        .add(addRouletteElement(".roulette-element.index-2"))
-        .add(addRouletteElement(".roulette-element.index-3"))
-        .add(addRouletteElement(".roulette-element.index-4"))
+            .timeline({
+                repeat: -1,
+                ease: "expo.out",
+                paused: true,
+                delay: 1,
+            })
+            .add(addRouletteElement(".roulette-element.index-1"))
+            .add(addRouletteElement(".roulette-element.index-2"))
+            .add(addRouletteElement(".roulette-element.index-3"))
+            .add(addRouletteElement(".roulette-element.index-4"));
 
         // Landing
-        landingInit()
-        gsap.set(".cover", { opacity: 1, duration: 0 })
-        gsap.set(".hero", { opacity: 0})
+        landingInit();
+        gsap.set(".cover", { opacity: 1, duration: 0 });
+        gsap.set(".hero", { opacity: 0 });
         gsap.timeline()
-            .add(() => {roulettetl.play();})
             .add(() => {
-                landingTitleAnimation()
-                gsap.to(".hero", {opacity: 1})
-                gsap.to(".cover", {opacity: 0, duration: 1})
+                roulettetl.play();
+            })
+            .add(() => {
+                landingTitleAnimation();
+                gsap.to(".hero", { opacity: 1 });
+                gsap.to(".cover", { opacity: 0, duration: 1 });
             })
             .add(() => landingSubtitleAnimation(), "+=1")
-            .add(() => landingCTAAnimation(), "+=1")
+            .add(() => landingCTAAnimation(), "+=1");
 
         // Circle Animations
         addLandingCircleAnimation(".circle-1", 20, 1, "-1rem", 5);
@@ -54,7 +56,6 @@
         addLandingCircleAnimation(".circle-3", 20, 2, "-3rem", 3);
         addLandingCircleAnimation(".circle-4", 20, 2.5, "-4rem", 2);
         addLandingCircleAnimation(".circle-5", 20, 3, "-5rem", 1);
-
 
         // Scroll Triggers
         const featureSection = document.querySelector(".features");
@@ -108,72 +109,90 @@
 <section class="hero parallax-none">
     <div class="gradient-decoration-color"></div>
     <div class="gradient-decoration-fade"></div>
-    <div class="hero-title m-5">
-        <h1>Your Pathfinder2e</h1>
-        <div class="roulette-group">
-            <h1 class="roulette-element index-1">Compendium</h1>
-            <h1 class="roulette-element index-2">Character Creator</h1>
-            <h1 class="roulette-element index-3">Calculator</h1>
-            <h1 class="roulette-element index-4">Simulator</h1>
+    <div class="max-width-wrapper">
+        <div class="hero-title m-5">
+            <h1>Your Pathfinder2e</h1>
+            <div class="roulette-group">
+                <h1 class="roulette-element index-1">Compendium</h1>
+                <h1 class="roulette-element index-2">Character Creator</h1>
+                <h1 class="roulette-element index-3">Calculator</h1>
+                <h1 class="roulette-element index-4">Simulator</h1>
+            </div>
         </div>
-    </div>
-    <p class="hero-subtitle m-5">And much more in the future.</p>
-    <div class="hero-cta">
-        <RButton text="Start your journey" />
+        <p class="hero-subtitle m-5">And much more in the future.</p>
+        <div class="hero-cta">
+            <RButton text="Start your journey" />
+        </div>
     </div>
 </section>
 <section id="landing-trigger-1" class="features">
     <FancySeparator />
-    <ScrollTriggeredDiv uniqueId="section-header-1" disableOnExit={true}>
-        <div class="section-header">
-            <Icon icon={IconType.Star} color="var(--accent-color)" />
-            <h1>All of your favourite stuff right at your reach</h1>
-        </div>
-    </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-1" disableOnExit={true}>
-        <Feature
-            title="Compendium Explorer"
-            subtitle="Every rule, spell, and monster. All in one place."
-            description="No more flipping through pages or opening multiple tabs. With our built-in Pathfinder 2e compendium, quickly find detailed information on classes, races, spells, monsters, and more. Everything you need for your game is just a search away."
-        />
-    </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-2"  disableOnExit={true} translateDirection="left">
-        <Feature
-            alt={true}
-            title="Character Creator"
-            subtitle="Design heroes worthy of legend."
-            description="Create and customize your perfect Pathfinder character with our intuitive character creator. Choose your ancestry, class, skills, and feats with ease, and fine-tune every stat to fit your playstyle. Whether you're a seasoned pro or new to the game, building your hero has never been this easy."
-        />
-    </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-3" disableOnExit={true}>
-        <Feature
-            title="Battle Simulator"
-            subtitle="Prepare for every encounter."
-            description="Test your character's mettle with our battle simulator. Practice different combat strategies, experiment with new abilities, or see how your party might fare against tough monsters. Perfect for preparing ahead of your next big session!"
-        />
-    </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="feature-4"  disableOnExit={true} translateDirection="left">
-        <Feature
-            alt={true}
-            title="Stat Calculator"
-            subtitle="Too much math? Leave that to us."
-            description="Tired of crunching numbers? Rolebrew's built-in calculator handles ability scores, modifiers, armor class, and all the nitty-gritty mechanics behind the scenes. Focus on the role-playing, while we take care of the math."
-        />
-    </ScrollTriggeredDiv>
+    <div class="max-width-wrapper">
+        <ScrollTriggeredDiv uniqueId="section-header-1" disableOnExit={true}>
+            <div class="section-header">
+                <Icon icon={IconType.Star} color="var(--accent-color)" />
+                <h1>All of your favourite stuff right at your reach</h1>
+            </div>
+        </ScrollTriggeredDiv>
+        <ScrollTriggeredDiv uniqueId="feature-1" disableOnExit={true}>
+            <Feature
+                title="Compendium Explorer"
+                subtitle="Every rule, spell, and monster. All in one place."
+                description="No more flipping through pages or opening multiple tabs. With our built-in Pathfinder 2e compendium, quickly find detailed information on classes, races, spells, monsters, and more. Everything you need for your game is just a search away."
+            />
+        </ScrollTriggeredDiv>
+        <ScrollTriggeredDiv
+            uniqueId="feature-2"
+            disableOnExit={true}
+            translateDirection="left"
+        >
+            <Feature
+                alt={true}
+                title="Character Creator"
+                subtitle="Design heroes worthy of legend."
+                description="Create and customize your perfect Pathfinder character with our intuitive character creator. Choose your ancestry, class, skills, and feats with ease, and fine-tune every stat to fit your playstyle. Whether you're a seasoned pro or new to the game, building your hero has never been this easy."
+            />
+        </ScrollTriggeredDiv>
+        <ScrollTriggeredDiv uniqueId="feature-3" disableOnExit={true}>
+            <Feature
+                title="Battle Simulator"
+                subtitle="Prepare for every encounter."
+                description="Test your character's mettle with our battle simulator. Practice different combat strategies, experiment with new abilities, or see how your party might fare against tough monsters. Perfect for preparing ahead of your next big session!"
+            />
+        </ScrollTriggeredDiv>
+        <ScrollTriggeredDiv
+            uniqueId="feature-4"
+            disableOnExit={true}
+            translateDirection="left"
+        >
+            <Feature
+                alt={true}
+                title="Stat Calculator"
+                subtitle="Too much math? Leave that to us."
+                description="Tired of crunching numbers? Rolebrew's built-in calculator handles ability scores, modifiers, armor class, and all the nitty-gritty mechanics behind the scenes. Focus on the role-playing, while we take care of the math."
+            />
+        </ScrollTriggeredDiv>
+    </div>
     <FancySeparator />
 </section>
 <section class="try-now">
     <div class="gradient-decoration-color flip"></div>
     <div class="gradient-decoration-fade flip"></div>
-    <ScrollTriggeredDiv uniqueId="section-header-2" disableOnExit={true}>
-        <div class="section-header">
-            <Icon icon={IconType.Star} color="var(--accent-color)" />
-            <h1>What are you waiting for?</h1>
-        </div>
-    </ScrollTriggeredDiv>
-    <ScrollTriggeredDiv uniqueId="section-button-1" disableOnExit={true} translateDirection="left">
-        <RButton text="Start your journey" />
-    </ScrollTriggeredDiv>
+    <div class="max-width-wrapper">
+        <ScrollTriggeredDiv uniqueId="section-header-2" disableOnExit={true}>
+            <div class="section-header">
+                <Icon icon={IconType.Star} color="var(--accent-color)" />
+                <h1>What are you waiting for?</h1>
+            </div>
+        </ScrollTriggeredDiv>
+        <ScrollTriggeredDiv
+            uniqueId="section-button-1"
+            disableOnExit={true}
+            translateDirection="left"
+        >
+            <RButton text="Start your journey" />
+        </ScrollTriggeredDiv>
+    </div>
 </section>
 <Footer />
 
@@ -217,6 +236,13 @@
         opacity: 0;
         padding: 4rem;
 
+        .max-width-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         .hero-title {
             position: relative;
             width: 100%;
@@ -250,19 +276,22 @@
 
     .features {
         position: relative;
-        width: 100vw;
-        padding: 4rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4rem;
+        display: grid;
+        place-items: center;
         background-color: #2f2d2b;
+
+        .max-width-wrapper {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+        }
     }
 
     .try-now {
         height: 40rem;
         min-height: 40rem;
-        padding: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;

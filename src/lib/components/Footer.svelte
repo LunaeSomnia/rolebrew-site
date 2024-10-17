@@ -6,53 +6,60 @@
 
 <footer>
     <FancySeparator />
-    <div class="section-header">
-        <Logo width="4rem" height="4rem" fill="var(--accent-color)" />
-        <h1>Rolebrew</h1>
-    </div>
-    <div class="footer-section-container">
-        <div class="footer-section">
-            <h2>Project</h2>
-            <a href="{base}/">About</a>
-            <a href="{base}/">Blog</a>
+
+    <div class="max-width-wrapper">
+        <div class="section-header">
+            <Logo width="4rem" height="4rem" fill="var(--accent-color)" />
+            <h1>Rolebrew</h1>
         </div>
-        <div class="footer-section">
-            <h2>Compendium</h2>
-            <a href="{base}/">Clases</a>
-            <a href="{base}/">Ancestries</a>
-            <a href="{base}/">Feats</a>
-            <a href="{base}/">Monsters</a>
-            <a href="{base}/">Items & Equipment</a>
-            <a href="{base}/">Traits</a>
-            <a href="{base}/">Spell</a>
-        </div>
-        <div class="footer-section">
-            <h2>Character Creator</h2>
-            <a href="{base}/">Create Character</a>
-            <a href="{base}/">Character Preview</a>
-            <a href="{base}/">PDF Generator</a>
-        </div>
-        <div class="footer-section">
-            <h2>Battle Simulator</h2>
-            <a href="{base}/">Encounter</a>
-            <a href="{base}/">Optimizer</a>
-        </div>
-        <div class="footer-section">
-            <h2>Stat Calculator</h2>
-            <a href="{base}/">Level-up Adjuster</a>
-            <a href="{base}/">Automatic Calculator</a>
+        <div class="footer-section-container">
+            <div class="footer-section">
+                <h2>Project</h2>
+                <a href="{base}/">About</a>
+                <a href="{base}/">Blog</a>
+            </div>
+            <div class="footer-section">
+                <h2>Compendium</h2>
+                <a href="{base}/">Clases</a>
+                <a href="{base}/">Ancestries</a>
+                <a href="{base}/">Feats</a>
+                <a href="{base}/">Monsters</a>
+                <a href="{base}/">Items & Equipment</a>
+                <a href="{base}/">Traits</a>
+                <a href="{base}/">Spell</a>
+            </div>
+            <div class="footer-section">
+                <h2>Character Creator</h2>
+                <a href="{base}/">Create Character</a>
+                <a href="{base}/">Character Preview</a>
+                <a href="{base}/">PDF Generator</a>
+            </div>
+            <div class="footer-section">
+                <h2>Battle Simulator</h2>
+                <a href="{base}/">Encounter</a>
+                <a href="{base}/">Optimizer</a>
+            </div>
+            <div class="footer-section">
+                <h2>Stat Calculator</h2>
+                <a href="{base}/">Level-up Adjuster</a>
+                <a href="{base}/">Automatic Calculator</a>
+            </div>
         </div>
     </div>
 </footer>
 
 <style lang="scss">
     footer {
-        padding: 4rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4rem;
+        display: grid;
+        place-items: center;
         background: linear-gradient(0deg, #2f2d2b 0%, rgba(47, 45, 43, 0) 100%);
+
+        .max-width-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+        }
 
         .section-header {
             display: flex;
@@ -75,6 +82,7 @@
             display: flex;
             align-items: flex-start;
             gap: 2rem;
+            padding-bottom: 4rem;
 
             & h2 {
                 color: var(--accent-color);
