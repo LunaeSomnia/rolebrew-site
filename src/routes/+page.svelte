@@ -225,8 +225,7 @@
         position: relative;
         width: 100vw;
 
-        min-height: 54rem;
-        height: 54rem;
+        
 
         display: flex;
         flex-direction: column;
@@ -234,7 +233,6 @@
         justify-content: center;
 
         opacity: 0;
-        padding: 4rem;
 
         .max-width-wrapper {
             display: flex;
@@ -256,7 +254,6 @@
 
             .roulette-group {
                 width: 100%;
-                height: 6rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -295,7 +292,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+
+        .max-width-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+        }
 
         :global(.rbutton) {
             font-size: 1.5rem;
@@ -400,6 +403,10 @@
     }
 
     @media (min-width: 0rem) {
+        .hero {
+            min-height: 40rem;
+            height: 40rem;
+        }
         .decorations {
             display: none;
         }
@@ -408,12 +415,25 @@
             font-size: 2.5rem;
             line-height: 3.5rem;
         }
+
+        .roulette-group {
+            height: 3.5rem;
+        }
     }
 
     // ~800px
     @media (min-width: 50rem) {
+        .hero {
+            padding: 4rem;
+            min-height: 54rem;
+            height: 54rem;
+        }
         .decorations {
             display: flex;
+        }
+
+        .roulette-group {
+            height: 5rem;
         }
 
         .hero-title h1 {
@@ -431,6 +451,10 @@
         .hero-title h1 {
             font-size: 6rem;
             line-height: 6rem;
+        }
+
+        .roulette-group {
+            height: 6rem;
         }
     }
 </style>
