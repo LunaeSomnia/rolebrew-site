@@ -27,18 +27,24 @@
             repeat: -1,
             ease: "expo.out",
             paused: true,
+            delay: 1,
         })
-        .add(addRouletteElement(".roulette-element.index-1"), "+=2.5")
-        .add(addRouletteElement(".roulette-element.index-2"), "+=2.5")
-        .add(addRouletteElement(".roulette-element.index-3"), "+=2.5")
-        .add(addRouletteElement(".roulette-element.index-4"), "+=2.5")
+        .add(addRouletteElement(".roulette-element.index-1"))
+        .add(addRouletteElement(".roulette-element.index-2"))
+        .add(addRouletteElement(".roulette-element.index-3"))
+        .add(addRouletteElement(".roulette-element.index-4"))
 
         // Landing
+        landingInit()
+        gsap.set(".cover", { opacity: 1, duration: 0 })
+        gsap.set(".hero", { opacity: 0})
         gsap.timeline()
-            .set(".cover", { opacity: 0, duration: 5 })
-            .add(landingInit())
             .add(() => {roulettetl.play();})
-            .add(() => landingTitleAnimation(), "+=1")
+            .add(() => {
+                landingTitleAnimation()
+                gsap.to(".hero", {opacity: 1})
+                gsap.to(".cover", {opacity: 0, duration: 1})
+            })
             .add(() => landingSubtitleAnimation(), "+=1")
             .add(() => landingCTAAnimation(), "+=1")
 
@@ -102,7 +108,7 @@
 <section class="hero parallax-none">
     <div class="gradient-decoration-color"></div>
     <div class="gradient-decoration-fade"></div>
-    <div class="hero-title m-4">
+    <div class="hero-title m-5">
         <h1>Your Pathfinder2e</h1>
         <div class="roulette-group">
             <h1 class="roulette-element index-1">Compendium</h1>
@@ -208,6 +214,7 @@
         align-items: center;
         justify-content: center;
 
+        opacity: 0;
         padding: 4rem;
 
         .hero-title {

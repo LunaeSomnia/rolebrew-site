@@ -51,55 +51,54 @@ export function addLandingCircleAnimation(
 export function addRouletteElement(element: string) {
     let rouletteAnimation = gsap.timeline()
 
-        .add(() => {
-            gsap.to(element, {
-                translateY: "0rem",
-                opacity: 1,
-                duration: 0.5,
-            })
-        })
-        .add(() => {
-            gsap.to(element, {
-                translateY: "-1rem",
-                opacity: 0,
-                duration: 0.5,
-                delay: 2,
-            })
-        }, "+=2");
+    .to(element, {
+        translateY: "0rem",
+        opacity: 1,
+        duration: 0.5,
+    })
+    .to(element, {
+        translateY: "0rem",
+        opacity: 1,
+        duration: 2,
+    })
+    .to(element, {
+        translateY: "-1rem",
+        opacity: 0,
+        duration: 0.5,
+        delay: 2,
+    })
+
     return rouletteAnimation;
 }
 
 // Theme Switching
 export function enterLightTheme() {
-    gsap.to("body", { backgroundColor: "#DEBD95", duration: 1 });
+    gsap.to("body", { backgroundColor: "#DEBD95", duration: 0.5 });
     gsap.to(".gradient-decoration-fade", {
         background: "linear-gradient(0deg,#DEBD95 0%,#DEBD9500 50%)",
-        duration: 1,
+        duration: 0.5,
     });
-    gsap.to(".circle-decoration", { opacity: 0, duration: 0.1 });
-    gsap.to(".features", { backgroundColor: "#DEBD95", duration: 1 });
+    gsap.to(".circle-decoration", { opacity: 0, duration: 0.15 });
+    gsap.to(".features", { backgroundColor: "#DEBD95", duration: 0.5 });
     setTheme("light");
 }
 
 export function enterDarkTheme() {
-    gsap.to("body", { backgroundColor: "#2f2d2b", duration: 1 });
+    gsap.to("body", { backgroundColor: "#2f2d2b", duration: 0.5 });
     gsap.to(".gradient-decoration-fade", {
         background: "linear-gradient(0deg,#2f2d2b 0%,#2f2d2b00 50%)",
-        duration: 1,
+        duration: 0.5,
     });
-    gsap.to(".circle-decoration", { opacity: 1, duration: 0.1 });
-    gsap.to(".features", { backgroundColor: "#2f2d2b", duration: 1 });
+    gsap.to(".circle-decoration", { opacity: 1, duration: 0.15 });
+    gsap.to(".features", { backgroundColor: "#2f2d2b", duration: 0.5 });
     setTheme("dark");
 }
 
 export function landingInit() {
-    const landingInit = gsap
-        .timeline({ duration: 1, ease: "expo.out" })
-        .set(".hero-title", { translateY: "-10rem", opacity: 0 })
-        .set(".hero-subtitle", { translateY: "-5rem", opacity: 0 })
-        .set(".hero-cta", { translateY: "-5rem", opacity: 0 })
 
-    return landingInit;
+    gsap.set(".hero-title", { translateY: "-10rem", opacity: 0, duration: 1, ease: "expo.out" })
+    gsap.set(".hero-subtitle", { translateY: "-5rem", opacity: 0, duration: 1, ease: "expo.out" })
+    gsap.set(".hero-cta", { translateY: "-5rem", opacity: 0, duration: 1, ease: "expo.out" })
 }
 
 export function landingTitleAnimation() {
