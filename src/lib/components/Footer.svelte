@@ -9,7 +9,7 @@
 
     <div class="max-width-wrapper">
         <div class="section-header">
-            <Logo width="4rem" height="4rem" fill="var(--accent-color)" />
+            <Logo width="4rem" height="4rem" fill="var(--primary-color)" />
             <h1>Rolebrew</h1>
         </div>
         <div class="footer-section-container">
@@ -85,7 +85,7 @@
             padding-bottom: 4rem;
 
             & h2 {
-                color: var(--accent-color);
+                color: var(--primary-color);
             }
 
             & a {

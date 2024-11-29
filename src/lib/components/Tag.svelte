@@ -13,8 +13,8 @@
         border-radius: 400rem;
         background-color: color-mix(
             in srgb,
-            var(--accent-color) 15%,
-            var(--accent-color-transparent)
+            var(--primary-color) 15%,
+            var(--primary-color-transparent)
         );
     }
 </style>

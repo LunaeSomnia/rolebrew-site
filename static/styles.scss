@@ -1,26 +1,64 @@
-$base-path: '/rolebrew-site';
+$base-path: "/rolebrew-site";
 
 @font-face {
-    font-family: 'BluuNext';
-    src: url('#{$base-path}/fonts/BluuNext-Bold.otf') format('opentype');
+    font-family: "BluuNext";
+    src: url("#{$base-path}/fonts/BluuNext-Bold.otf") format("opentype");
     font-weight: bold;
     font-style: normal;
 }
 
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("#{$base-path}/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
 
 :root {
     --light-1: #f4daba;
     --light-1-transparent: #f4daba00;
-    --light-2: #DEBD95;
+    --light-2: #debd95;
 
-    --dark-1: #2f2d2b;
-    --dark-1-transparent: #2f2d2b00;
-    --dark-2: #393835;
+    --dark-0: #0f0f14;
+    --dark-0-transparent: #0f0f1400;
+    --dark-1: #1e1e23;
+    --dark-1-transparent: #1e1e2300;
+    --dark-2: #2a2a2e;
+    --dark-2-transparent: #2a2a2e00;
+    --dark-3: #3a3a3e;
+    --dark-3-transparent: #3a3a3e00;
 
-    --accent-1: #ffb230;
-    --accent-1-transparent: #ffb23000;
-    --accent-2: #b97d19;
-    --accent-2-transparent: #b97d1900;
+    --primary-1: #ffb230;
+    --primary-1-transparent: #ffb23000;
+    --primary-2: #b97d19;
+    --primary-2-transparent: #b97d1900;
+
+    --secondary-1: #3052ff;
+    --secondary-1-transparent: #3052ff00;
+    --secondary-2: #31218e;
+    --secondary-2-transparent: #31218e00;
+
+    --primary-color: var(--primary-1);
+    --primary-color-transparent: var(--primary-1-transparent);
+    --background-color: var(--dark-2);
+    --background-color-2: var(--dark-3);
+    --background-color-0: var(--dark-2-transparent);
+    --background-color-alt: var(--light-1);
+    --text-color: var(--light-1);
+
+    // sizes
+
+    --h1-size: 4rem;
+    --h2-size: 2.5rem;
+    --h3-size: 2rem;
+    --h4-size: 1.5rem;
+
+    //
+
+    --max-content-width: 80rem;
+    --sidebar-width: 16rem;
+
+    //
 
     font-size: 16px;
 
@@ -36,46 +74,23 @@ $base-path: '/rolebrew-site';
     z-index: -1;
     position: relative;
     scroll-behavior: smooth;
-    font-family: 'Manrope', sans-serif;
+    font-family: "Manrope", sans-serif;
     color: var(--text-color);
+    line-height: 1.5;
 }
 
 body {
-
-    --light-1: #f4daba;
-    --light-1-transparent: #f4daba00;
-    --light-2: #DEBD95;
-
-    --dark-1: #2f2d2b;
-    --dark-1-transparent: #2f2d2b00;
-    --dark-2: #393835;
-
-    --accent-1: #ffb230;
-    --accent-1-transparent: #ffb23000;
-    --accent-2: #b97d19;
-    --accent-2-transparent: #b97d1900;
-
-    --accent-color: var(--accent-1);
-    --accent-color-transparent: var(--accent-1-transparent);
-    --background-color: var(--dark-1);
-    --background-color-2: var(--dark-2);
-    --background-color-0: var(--dark-1-transparent);
-    --background-color-alt: var(--light-1);
-    --text-color: var(--light-1);
-
-    // 
-
-    --max-content-width: 80rem;
-    --sidebar-width: 16rem;
-
-    // 
+    
 
     width: 100vw;
     height: 100vh;
 
-    background-color: var(--dark-1);
+    background-color: var(--dark-2);
 
     color: var(--text-color);
+
+    display: flex;
+    flex-direction: column;
 
     // transition: background-color 1s ease-in-out;
 }
@@ -89,6 +104,28 @@ h6 {
     font-display: swap;
     font-family: "BluuNext", serif;
     font-weight: bold;
+    line-height: 1.2;
+    width: fit-content;
+}
+
+h1 {
+    font-size: var(--h1-size);
+}
+
+h2 {
+    font-size: var(--h2-size);
+}
+
+h3 {
+    font-size: var(--h3-size);
+}
+
+h4 {
+    font-size: var(--h4-size);
+}
+
+code {
+    font-family: "JetBrains Mono", monospace;
 }
 
 /* Margins */

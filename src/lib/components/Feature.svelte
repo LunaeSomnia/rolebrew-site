@@ -1,7 +1,7 @@
 <script lang="ts">
     import { IconType } from "$lib/icon";
-    import Icon from "$lib/Icon.svelte";
-    import Tag from "$lib/Tag.svelte";
+    import Icon from "$lib/components/Icon.svelte";
+    import Tag from "$lib/components/Tag.svelte";
 
     export let alt = false;
     export let title = "Feature Title";
@@ -14,7 +14,7 @@
     <div class="feature-description">
         <div class="feature-header m-3">
             <Tag padding="0.5rem">
-                <Icon icon={IconType.Book} color="var(--accent-color)" />
+                <Icon icon={IconType.Book} color="var(--primary-color)" />
             </Tag>
             <h2>{title}</h2>
         </div>
@@ -50,7 +50,7 @@
 
     .subtitle {
         font-style: italic;
-        color: var(--accent-color);
+        color: var(--primary-color);
     }
 
     .feature-header {

@@ -3,9 +3,7 @@
 </script>
 
 <NavBar />
-<div class="page-wrapper parallax-base full">
-    <slot />
-</div>
+<slot />
 
 <style lang="scss">
 </style>

@@ -3,52 +3,72 @@
     import FancyArrow from "$lib/svgs/FancyArrow.svelte";
     import Logo from "$lib/svgs/Logo.svelte";
     import RButton from "./RButton.svelte";
+
+    const alt = base === "/" ? "alt" : "";
 </script>
 
-<nav class="nav-bar">
+<nav class="nav-bar {alt}">
     <div class="max-width-wrapper">
         <nav class="nav-left">
-            <a href={base}>About</a>
-            <a href={base}>Blog</a>
+            <a href="{base}/compendium/">Compendium</a>
+            <!-- <a href="{base}/characters/">Characters</a>
+            <a href="{base}/simulator/">Simulator</a> -->
         </nav>
         <nav class="nav-middle">
             <div class="fancy-arrow">
                 <FancyArrow
                     direction="left"
-                    pathFill="var(--accent-color)"
+                    pathFill="var(--primary-color)"
                     pathOpacity="0.5"
                 />
             </div>
-            <a href={base}>
-                <Logo width="2rem" height="2rem" pathFill="var(--accent-color)" />
+            <a href="{base}/">
+                <Logo
+                    width="2rem"
+                    height="2rem"
+                    pathFill="var(--primary-color)"
+                />
             </a>
             <div class="fancy-arrow">
                 <FancyArrow
                     direction="right"
-                    pathFill="var(--accent-color)"
+                    pathFill="var(--primary-color)"
                     pathOpacity="0.5"
                 />
             </div>
         </nav>
         <nav class="nav-right">
+            <a href="{base}/login">Log In</a>
             <RButton text="Start your journey" />
         </nav>
     </div>
 </nav>
 
 <style lang="scss">
-
     .nav-bar {
-        position: absolute;
         width: 100vw;
         height: 4rem;
 
         display: grid;
         place-items: center;
-        
-        z-index: 0;
 
-        &:before {
+        z-index: 0;
+        background-color: var(--background-color);
+        border-bottom: 1px;
+        border-style: solid;
+        border-image: linear-gradient(
+                to right,
+                #ffb23044 0%,
+                #ffb230 50%,
+                #ffb23044 100%
+            )
+            1;
+
+        &.alt {
+            position: absolute;
+        }
+
+        &.alt:before {
             content: "";
             position: absolute;
             top: 0;
@@ -86,6 +106,7 @@
         display: flex;
         flex-direction: row;
         gap: 2rem;
+        align-items: center;
     }
 
     .nav-middle {
@@ -97,6 +118,13 @@
         flex-direction: row;
         align-items: center;
         gap: 1rem;
+    }
+
+    .nav-right {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
     }
 
     @media (min-width: 0rem) {

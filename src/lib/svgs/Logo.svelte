@@ -4,7 +4,7 @@
 
     export let alt = false;
     export let fill: string = "none";
-    export let pathFill: string = "var(--accent-color)";
+    export let pathFill: string = "var(--primary-color)";
 </script>
 
 <svg

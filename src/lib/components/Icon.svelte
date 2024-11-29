@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { IconType, ICON_DEFINITION, IconFillType } from "./icon";
+    import { IconType, ICON_DEFINITION, IconFillType } from "../icon";
 
     const TRANSPARENT = "#00000000";
 

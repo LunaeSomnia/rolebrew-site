@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let pathFill: string = "var(--accent-color)";
+    export let pathFill: string = "var(--primary-color)";
     export let pathOpacity: string = "0.5";
 </script>
 
