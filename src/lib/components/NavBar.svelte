@@ -10,7 +10,7 @@
 <nav class="nav-bar {alt}">
     <div class="max-width-wrapper">
         <nav class="nav-left">
-            <a href="{base}/compendium/">Compendium</a>
+            <a href="{base}/compendium">Compendium</a>
             <!-- <a href="{base}/characters/">Characters</a>
             <a href="{base}/simulator/">Simulator</a> -->
         </nav>

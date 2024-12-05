@@ -38,7 +38,6 @@
                 linesAcc += segmentLength + 2;
             }
         }
-        $inspect(linesVector);
     });
 
     function getRandomInt(max: number) {

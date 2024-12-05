@@ -2,6 +2,7 @@
     "name": "rolebrew",
     "version": "0.0.1",
     "private": true,
+    "proxy": "http://localhost:8080",
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",
