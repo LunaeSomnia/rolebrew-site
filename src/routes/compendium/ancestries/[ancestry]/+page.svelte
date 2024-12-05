@@ -10,11 +10,17 @@
     let { data }: { data: PageData } = $props();
 
     let ancestryHandle: FetchHandle<Ancestry> | undefined = $state();
-    let ancestryError = $derived(ancestryHandle?.error);
-    let ancestryData = $derived(ancestryHandle?.value);
+    let ancestryError: Error | undefined = $state(undefined);
+    let ancestryData: Ancestry | undefined = $state(undefined);
 
     onMount(() => {
         ancestryHandle = handleFetch<Ancestry>(data.ancestryDataLocation);
+        ancestryHandle?.getError().subscribe((value) => {
+            ancestryError = value;
+        });
+        ancestryHandle?.getValue().subscribe((value) => {
+            ancestryData = value;
+        });
     });
 </script>
 

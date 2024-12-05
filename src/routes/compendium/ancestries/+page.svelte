@@ -1,23 +1,27 @@
 <script lang="ts">
     import type { PageData } from "./$types";
     import { base } from "$app/paths";
-    import { fetchCache, handleFetch } from "$lib/fetchCache";
+    import { FetchHandle, handleFetch } from "$lib/fetchCache";
     import { onMount } from "svelte";
     import type { Summary } from "$lib/bindings";
+    import { summaries } from "../summaries.svelte";
 
     let { data }: { data: PageData } = $props();
 
-    let summariesData: Summary[] = $state([]);
+    let ancestryHandle: FetchHandle<Summary[]> | undefined = $state();
+
+    let ancestries = $derived(summaries.ancestries);
 
     onMount(() => {
-        handleFetch<Summary[]>(data.summariesLocation, (data) => {
-            summariesData = data;
+        ancestryHandle = handleFetch<Summary[]>(data.summariesLocation);
+        ancestryHandle?.getValue().subscribe((value) => {
+            summaries.ancestries = value ?? [];
         });
     });
 </script>
 
-{#if summariesData.length !== 0}
-    {#each summariesData as summary}
+{#if ancestries.length !== 0}
+    {#each ancestries as summary}
         <a href="{base}{summary.url}">{summary.name}</a>
     {/each}
 {:else}

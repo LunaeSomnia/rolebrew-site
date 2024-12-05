@@ -1,52 +1,57 @@
+import { type Writable, writable } from "svelte/store";
+
 export let fetchCache: Map<string, any> = new Map();
 
+export function handleFetch<T>(url: string): FetchHandle<T> {
+    let handle: FetchHandle<T> = new FetchHandle();
 
+    if (fetchCache.has(url)) {
+        let data = fetchCache.get(url);
+        handle.value = data;
+        handle.state.set("fetched");
+    } else {
+        handle.state.set("loading");
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch: " + url);
+                }
 
-export function handleFetch<T>(
-  url: string): FetchHandle<T> {
-  if (fetchCache.has(url)) {
-    let data = fetchCache.get(url);
-  }
+                return response.json();
+            })
+            .then((json) => {
+                let typed = json as T;
+                fetchCache.set(url, typed);
+                handle.state.set("fetched");
+                handle.value.set(typed);
+                console.log(typed);
+            })
+            .catch((error) => {
+                handle.state.set("error");
+                handle.error = error;
+                console.error(error);
+            });
+    }
 
-  let handle: FetchHandle<T> = new FetchHandle();
-
-  handle.state = 'loading'
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch: ' + url);
-      }
-
-      return response.json();
-    })
-    .then((json) => {
-      let typed = json as T;
-      fetchCache.set(url, typed);
-      handle.state = 'fetched'
-      handle.value = typed
-    })
-    .catch((error) => {
-      handle.state = 'error'
-      handle.error = error
-    });
-
-  return handle
+    return handle;
 }
 
 export class FetchHandle<T> {
-  state: 'unfetched' | 'loading' | 'fetched' | 'error' = 'unfetched'
-  value: T | undefined = undefined
-  error: Error | undefined = undefined
+    state: Writable<"unfetched" | "loading" | "fetched" | "error"> = writable(
+        "unfetched",
+    );
+    value: Writable<T | undefined> = writable(undefined);
+    error: Writable<Error | undefined> = writable(undefined);
 
-  getState() {
-    return this.state;
-  }
+    getState() {
+        return this.state;
+    }
 
-  getValue() {
-    return this.value;
-  }
+    getValue() {
+        return this.value;
+    }
 
-  getError() {
-    return this.error;
-  }
+    getError() {
+        return this.error;
+    }
 }
