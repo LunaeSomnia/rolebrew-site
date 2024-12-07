@@ -47,7 +47,7 @@
 <style lang="scss">
     .nav-bar {
         width: 100vw;
-        height: 4rem;
+        height: var(--nav-height);
 
         display: grid;
         place-items: center;

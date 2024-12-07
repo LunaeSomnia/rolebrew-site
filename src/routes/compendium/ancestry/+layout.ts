@@ -1,6 +1,6 @@
-import {PUBLIC_BACKEND_SERVER} from '$env/static/public';
+import { PUBLIC_BACKEND_SERVER } from '$env/static/public';
 
-import type {LayoutLoad} from './$types';
+import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async () => {
 

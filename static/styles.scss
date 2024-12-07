@@ -29,6 +29,7 @@ $base-path: "/rolebrew-site";
     --dark-3-transparent: #3a3a3e00;
 
     --primary-1: #ffb230;
+    --primary-1-10: #ffb23022;
     --primary-1-25: #ffb23044;
     --primary-1-transparent: #ffb23000;
     --primary-2: #b97d19;
@@ -58,13 +59,14 @@ $base-path: "/rolebrew-site";
 
     --max-content-width: 80rem;
     --sidebar-width: 16rem;
+    --nav-height: 4rem;
 
     //
 
     font-size: 16px;
 
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 * {
@@ -84,7 +86,7 @@ body {
 
 
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     background-color: var(--dark-2);
 
@@ -127,6 +129,58 @@ h4 {
 
 code {
     font-family: "JetBrains Mono", monospace;
+}
+
+a {
+    text-decoration: none;
+
+    &:link {
+        text-decoration: none;
+    }
+
+    &:active {
+        text-decoration: none;
+    }
+}
+
+.placeholder {
+    border-radius: 0.5rem;
+    opacity: 0.25;
+
+    /*  */
+    background: #f4daba;
+    background: linear-gradient(90deg,
+            #f4daba44 0%,
+            #f4daba88 25%,
+            #f4daba44 50%,
+            #f4daba44 100%);
+    background-size: 400% 400%;
+    --animation-time: 2s;
+    animation-name: placeholder, placeholder-start;
+    animation-duration: 2s, 1s;
+    animation-iteration-count: infinite, 1;
+}
+
+@keyframes placeholder {
+    0% {
+        background-position: 133% 0%;
+    }
+
+    100% {
+        background-position: 0% 133%;
+    }
+}
+
+@keyframes placeholder-start {
+
+    50%,
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.25;
+    }
 }
 
 /* Margins */

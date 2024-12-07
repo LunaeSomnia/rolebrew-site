@@ -4,25 +4,23 @@
     import H1Placeholder from "$lib/components/skeleton/H1Skeleton.svelte";
     import PPlaceholder from "$lib/components/skeleton/PSkeleton.svelte";
     import AnimatableSlide from "$lib/components/AnimatableSlide.svelte";
-    import { FetchHandle, handleFetch } from "$lib/fetchCache";
-    import { onMount } from "svelte";
+    import { FetchHandle, handleFetch } from "../../../../lib/fetch.svelte";
 
     let { data }: { data: PageData } = $props();
 
     let ancestryHandle: FetchHandle<Ancestry> | undefined = $state();
-    let ancestryError: Error | undefined = $state(undefined);
-    let ancestryData: Ancestry | undefined = $state(undefined);
+    let ancestryData: Ancestry | undefined = $derived(ancestryHandle?.value);
 
-    onMount(() => {
+    $effect(() => {
         ancestryHandle = handleFetch<Ancestry>(data.ancestryDataLocation);
-        ancestryHandle?.getError().subscribe((value) => {
-            ancestryError = value;
-        });
-        ancestryHandle?.getValue().subscribe((value) => {
-            ancestryData = value;
-        });
     });
 </script>
+
+<svelte:head>
+    {#if ancestryData}
+        <title>{ancestryData?.name} - Rolebrew</title>
+    {/if}
+</svelte:head>
 
 {#if ancestryData}
     <AnimatableSlide>
@@ -32,5 +30,5 @@
 {:else}
     <H1Placeholder />
     <PPlaceholder lines={3} />
-    <PPlaceholder />
+    <PPlaceholder lines={2} />
 {/if}

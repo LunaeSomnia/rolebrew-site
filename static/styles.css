@@ -23,6 +23,7 @@
   --dark-3: #3a3a3e;
   --dark-3-transparent: #3a3a3e00;
   --primary-1: #ffb230;
+  --primary-1-10: #ffb23022;
   --primary-1-25: #ffb23044;
   --primary-1-transparent: #ffb23000;
   --primary-2: #b97d19;
@@ -44,9 +45,10 @@
   --h4-size: 1.5rem;
   --max-content-width: 80rem;
   --sidebar-width: 16rem;
+  --nav-height: 4rem;
   font-size: 16px;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 * {
@@ -64,7 +66,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--dark-2);
   color: var(--text-color);
   display: flex;
@@ -104,6 +106,45 @@ code {
   font-family: "JetBrains Mono", monospace;
 }
 
+a {
+  text-decoration: none;
+}
+a:link {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+
+.placeholder {
+  border-radius: 0.5rem;
+  opacity: 0.25;
+  /*  */
+  background: #f4daba;
+  background: linear-gradient(90deg, rgba(244, 218, 186, 0.2666666667) 0%, rgba(244, 218, 186, 0.5333333333) 25%, rgba(244, 218, 186, 0.2666666667) 50%, rgba(244, 218, 186, 0.2666666667) 100%);
+  background-size: 400% 400%;
+  --animation-time: 2s;
+  animation-name: placeholder, placeholder-start;
+  animation-duration: 2s, 1s;
+  animation-iteration-count: infinite, 1;
+}
+
+@keyframes placeholder {
+  0% {
+    background-position: 133% 0%;
+  }
+  100% {
+    background-position: 0% 133%;
+  }
+}
+@keyframes placeholder-start {
+  50%, 0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
 /* Margins */
 .m-0 {
   margin-bottom: 0rem;

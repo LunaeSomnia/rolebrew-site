@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { PageData } from "./$types";
     import { base } from "$app/paths";
-    import { FetchHandle, handleFetch } from "$lib/fetchCache";
+    import { FetchHandle, handleFetch } from "../../../lib/fetch.svelte";
     import { onMount } from "svelte";
     import type { Summary } from "$lib/bindings";
     import { summaries } from "../summaries.svelte";
@@ -10,17 +10,14 @@
 
     let ancestryHandle: FetchHandle<Summary[]> | undefined = $state();
 
-    let ancestries = $derived(summaries.ancestries);
+    let ancestries = $derived(summaries.ancestry);
 
     onMount(() => {
         ancestryHandle = handleFetch<Summary[]>(data.summariesLocation);
-        ancestryHandle?.getValue().subscribe((value) => {
-            summaries.ancestries = value ?? [];
-        });
     });
 </script>
 
-{#if ancestries.length !== 0}
+{#if ancestries && ancestries.length !== 0}
     {#each ancestries as summary}
         <a href="{base}{summary.url}">{summary.name}</a>
     {/each}

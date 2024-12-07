@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { parseCssValue } from "$lib/style";
     import { onMount } from "svelte";
 
-    let { width = "100%", lines = 2 } = $props();
+    let { width = "100%", lines } = $props();
 
     const baseFontSize = 16;
     const baseLineHeight = 1.5;
@@ -50,7 +49,7 @@
         <div
             class="placeholder"
             style="width:{line}rem; height:{heightStyle}; animation-delay: {i *
-                animationDelayMS}ms;"
+                animationDelayMS}ms, 0s;"
         ></div>
     {/each}
 </div>
@@ -60,31 +59,5 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
-    }
-
-    .placeholder {
-        border-radius: 0.5rem;
-        opacity: 0.25;
-
-        /*  */
-        background: #f4daba;
-        background: linear-gradient(
-            90deg,
-            #f4daba44 0%,
-            #f4daba 25%,
-            #f4daba44 50%,
-            #f4daba44 100%
-        );
-        background-size: 400% 400%;
-        animation: placeholder 2000ms linear infinite;
-    }
-
-    @keyframes placeholder {
-        0% {
-            background-position: 133% 0%;
-        }
-        100% {
-            background-position: 0% 133%;
-        }
     }
 </style>

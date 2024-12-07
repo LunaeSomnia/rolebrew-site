@@ -1,10 +1,11 @@
 <script lang="ts">
-    export let width = "40";
-    export let height = "40";
-
-    export let alt = false;
-    export let fill: string = "none";
-    export let pathFill: string = "var(--primary-color)";
+    let {
+        width = "40",
+        height = "40",
+        alt = false,
+        fill = "none",
+        pathFill = "var(--primary-color)",
+    } = $props();
 </script>
 
 <svg

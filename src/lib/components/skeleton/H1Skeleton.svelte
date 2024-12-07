@@ -30,32 +30,3 @@
 </script>
 
 <div class="placeholder" style="width:{width}; height:{heightStyle}"></div>
-
-<style>
-    .placeholder {
-        border-radius: 0.5rem;
-        opacity: 0.25;
-
-        /*  */
-        background: #f4daba;
-        background: linear-gradient(
-            90deg,
-            #f4daba44 0%,
-            #f4daba 25%,
-            #f4daba44 50%,
-            #f4daba44 100%
-        );
-        background-size: 400% 400%;
-        --animation-time: 2000ms;
-        animation: placeholder var(--animation-time) linear infinite;
-    }
-
-    @keyframes placeholder {
-        0% {
-            background-position: 133% 0%;
-        }
-        100% {
-            background-position: 0% 133%;
-        }
-    }
-</style>
