@@ -1,52 +1,71 @@
+@use "sass:color";
+@use "sass:meta";
+@use "sass:list";
+@use "sass:math";
+
 $base-path: "/rolebrew-site";
+@import url("./fonts.css");
 
-@font-face {
-    font-family: "BluuNext";
-    src: url("#{$base-path}/fonts/BluuNext-Bold.otf") format("opentype");
-    font-weight: bold;
-    font-style: normal;
+$light-1: #f4daba;
+$light-2: #ddccb6;
+$light-3: #b6ab9e;
+$dark-0: #0f0f14;
+$dark-1: #1e1e23;
+$dark-2: #2a2a2e;
+$dark-3: #3a3a3e;
+$dark-4: #3a3a3e;
+$primary-1: #ffb230;
+$primary-2: #b97d19;
+$secondary-1: #3052ff;
+$secondary-2: #31218e;
+// $primary-color: $primary-1;
+// $background-color: $dark-2;
+// $background-color-2: $dark-3;
+// $background-color-0: $dark-2-transparent;
+// $background-color-alt: $light-1;
+// $text-color: $light-1;
+
+@mixin create-color-transparencies($color-name, $color-value) {
+    --#{$color-name}: #{$color-value};
+    @each $t in $transparencies {
+        @include color-transparency($color-name, $color-name, $color-value, $t);
+    }
 }
 
-@font-face {
-    font-family: "JetBrains Mono";
-    src: url("#{$base-path}/fonts/JetBrainsMono-Regular.ttf") format("truetype");
-    font-weight: bold;
-    font-style: normal;
+@mixin target-create-color-transparencies($target-color-name, $color-name, $color-value) {
+    --#{$target-color-name}: #{$color-value};
+    @each $t in $transparencies {
+        @include color-transparency($target-color-name, $color-name, $color-value, $t);
+    }
 }
+
+@mixin color-transparency($target-color-name, $color-name, $color-value, $transparency) {
+    --#{$target-color-name}-#{$transparency}: #{rgba($color-value, math.div($transparency, 100))};
+}
+
+$transparencies: 10, 25, 50, 85, 100;
 
 :root {
-    --light-1: #f4daba;
-    --light-1-transparent: #f4daba00;
-    --light-2: #debd95;
+    @include create-color-transparencies("light-1", $light-1);
+    @include create-color-transparencies("light-2", $light-2);
+    @include create-color-transparencies("light-3", $light-3);
+    @include create-color-transparencies("dark-0", $dark-0);
+    @include create-color-transparencies("dark-1", $dark-1);
+    @include create-color-transparencies("dark-2", $dark-2);
+    @include create-color-transparencies("dark-3", $dark-3);
+    @include create-color-transparencies("dark-4", $dark-4);
+    @include create-color-transparencies("primary-1", $primary-1);
+    @include create-color-transparencies("primary-2", $primary-2);
+    @include create-color-transparencies("secondary-1", $secondary-1);
+    @include create-color-transparencies("secondary-2", $secondary-2);
 
-    --dark-0: #0f0f14;
-    --dark-0-transparent: #0f0f1400;
-    --dark-1: #1e1e23;
-    --dark-1-transparent: #1e1e2300;
-    --dark-2: #2a2a2e;
-    --dark-2-transparent: #2a2a2e00;
-    --dark-3: #3a3a3e;
-    --dark-3-transparent: #3a3a3e00;
-
-    --primary-1: #ffb230;
-    --primary-1-10: #ffb23022;
-    --primary-1-25: #ffb23044;
-    --primary-1-transparent: #ffb23000;
-    --primary-2: #b97d19;
-    --primary-2-transparent: #b97d1900;
-
-    --secondary-1: #3052ff;
-    --secondary-1-transparent: #3052ff00;
-    --secondary-2: #31218e;
-    --secondary-2-transparent: #31218e00;
-
-    --primary-color: var(--primary-1);
-    --primary-color-transparent: var(--primary-1-transparent);
-    --background-color: var(--dark-2);
-    --background-color-2: var(--dark-3);
-    --background-color-0: var(--dark-2-transparent);
-    --background-color-alt: var(--light-1);
-    --text-color: var(--light-1);
+    // --primary-color: $primary-color;
+    // --primary-color-transparent: $primary-color-transparent;
+    // --background-color: $background-color;
+    // --background-color-2: $background-color-2;
+    // --background-color-0: $background-color-0;
+    // --background-color-alt: $background-color-alt;
+    // --text-color: $text-color;
 
     // sizes
 
@@ -78,24 +97,40 @@ $base-path: "/rolebrew-site";
     position: relative;
     scroll-behavior: smooth;
     font-family: "Manrope", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.025rem;
     color: var(--text-color);
     line-height: 1.5;
 }
 
 body {
-
-
     width: 100vw;
     min-height: 100vh;
 
-    background-color: var(--dark-2);
+    background-color: var(--background-color);
 
     color: var(--text-color);
 
     display: flex;
     flex-direction: column;
 
-    // transition: background-color 1s ease-in-out;
+    &.dark {
+        @include target-create-color-transparencies("primary-color", "primary-1", $primary-1);
+        @include target-create-color-transparencies("background-color", "dark-1", $dark-1);
+        @include target-create-color-transparencies("background-color-2", "dark-2", $dark-2);
+        @include target-create-color-transparencies("background-color-3", "dark-3", $dark-3);
+        @include target-create-color-transparencies("background-color-alt", "light-1", $light-1);
+        @include target-create-color-transparencies("text-color", "light-1", $light-1);
+    }
+
+    &.light {
+        @include target-create-color-transparencies("primary-color", "primary-2", $primary-2);
+        @include target-create-color-transparencies("background-color", "light-1", $light-1);
+        @include target-create-color-transparencies("background-color-2", "light-2", $light-2);
+        @include target-create-color-transparencies("background-color-3", "light-3", $light-3);
+        @include target-create-color-transparencies("background-color-alt", "dark-1", $dark-1);
+        @include target-create-color-transparencies("text-color", "dark-1", $dark-1);
+    }
 }
 
 h1,
@@ -143,17 +178,76 @@ a {
     }
 }
 
+table {
+    border-collapse: collapse;
+    background: var(--background-color-2);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    * {
+        position: relative;
+    }
+
+    td,
+    th {
+        padding-left: 0.5rem;
+    }
+
+    thead tr {
+        height: 2rem;
+
+        & th {
+            font-weight: bold;
+            background: var(--background-color-3);
+        }
+    }
+
+    tbody tr {
+        height: 2rem;
+        &:last-child {
+            border: 0;
+        }
+
+        & td {
+            color: var(--text-color-85);
+        }
+    }
+
+    td,
+    th {
+        text-align: left;
+    }
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background: var(--text-color);
+    color: var(--background-color);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 250ms ease-out;
+
+    &:hover {
+        // background: color.change($text-color, $lightness: 25%);
+    }
+
+    &.active {
+        background-color: var(--primary-color);
+    }
+}
+
 .placeholder {
     border-radius: 0.5rem;
     opacity: 0.25;
 
     /*  */
     background: #f4daba;
-    background: linear-gradient(90deg,
-            #f4daba44 0%,
-            #f4daba88 25%,
-            #f4daba44 50%,
-            #f4daba44 100%);
+    background: linear-gradient(90deg, #f4daba44 0%, #f4daba88 25%, #f4daba44 50%, #f4daba44 100%);
     background-size: 400% 400%;
     --animation-time: 2s;
     animation-name: placeholder, placeholder-start;
@@ -172,7 +266,6 @@ a {
 }
 
 @keyframes placeholder-start {
-
     50%,
     0% {
         opacity: 0;

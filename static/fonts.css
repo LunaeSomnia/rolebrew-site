@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'BluuNext';
+    src: url('fonts/BluuNext-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('fonts/EBGaramond08-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('fonts/EBGaramond08-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('fonts/EBGaramond12-AllSC.otf') format('opentype');
+    font-variant: small-caps;
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('fonts/EBGaramond12-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond';
+    src: url('fonts/EBGaramond12-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond Initials';
+    src: url('fonts/EBGaramond-Initials.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond Initials';
+    src: url('fonts/EBGaramond-InitialsF1.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond Initials';
+    src: url('fonts/EBGaramond-InitialsF2.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond Small Caps';
+    src: url('fonts/EBGaramondSC08-Regular.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'EB Garamond Small Caps';
+    src: url('fonts/EBGaramondSC12-Regular.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fonts/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  

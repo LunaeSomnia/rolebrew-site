@@ -1,14 +1,9 @@
 <script lang="ts">
     import type { Summary } from "$lib/bindings";
     import Icon from "$lib/components/Icon.svelte";
-    import { handleFetch, type FetchHandle } from "../../lib/fetch.svelte";
+    import { type FetchHandle } from "../../lib/fetch.svelte";
     import { IconType } from "$lib/icon";
-    import {
-        summaries,
-        summariesFetchLocation,
-        type SummaryKey,
-    } from "./summaries.svelte";
-    import { PUBLIC_BACKEND_SERVER } from "$env/static/public";
+    import { type SummaryKey } from "./summaries.svelte";
     import PSkeleton from "$lib/components/skeleton/PSkeleton.svelte";
     import type { Snippet } from "svelte";
 
@@ -25,32 +20,31 @@
     let accordionDataState = $derived(accordionData?.state);
 
     function onHandleClick() {
-        open = !open;
-
-        if (open && !dataExists()) {
-            fetchData();
-        }
+        //     open = !open;
+        //     if (open && !dataExists()) {
+        //         fetchData();
+        //     }
     }
 
-    function dataExists() {
-        return summaries[handleSlug] !== undefined;
-    }
+    // function dataExists() {
+    //     return summaries[handleSlug] !== undefined;
+    // }
 
-    function fetchData() {
-        accordionData = handleFetch<Summary[]>(
-            PUBLIC_BACKEND_SERVER + summariesFetchLocation[handleSlug],
-        );
-    }
+    // function fetchData() {
+    //     accordionData = handleFetch<Summary[]>(
+    //         PUBLIC_BACKEND_SERVER + summariesFetchLocation[handleSlug],
+    //     );
+    // }
 
-    $effect(() => {
-        summaries[handleSlug] = accordionData?.value;
-    });
+    // $effect(() => {
+    //     summaries[handleSlug] = accordionData?.value;
+    // });
 </script>
 
 <div class="sidebar-accordion {open ? 'open' : ''}">
     <button class="sidebar-accordion-handle" onclick={onHandleClick}>
         <div class="sidebar-accordion-handle-icon">
-            <Icon icon={IconType.ChevronRight} color="var(--primary-1)" />
+            <Icon icon={IconType.ChevronRight} color="var(--primary-color)" />
         </div>
         <h4>{handleName}</h4>
     </button>
@@ -98,7 +92,7 @@
         }
 
         * {
-            color: var(--primary-1);
+            color: var(--primary-color);
         }
     }
 

@@ -1,3 +1,5 @@
+export const fetchCache: Map<string, any> = new Map();
+
 export function handleFetch<T>(url: string): FetchHandle<T> {
     let handle: FetchHandle<T> = new FetchHandle();
 

@@ -181,7 +181,7 @@
 
 <style lang="scss">
     .page-wrapper {
-        background-color: var(--dark-2);
+        background-color: var(--background-color);
         background-image: url("/noises/bg-01.webp");
         background-size: 1024px 1024px;
         background-repeat: repeat;
@@ -196,7 +196,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: var(--dark-2);
+        background-color: var(--background-color);
         opacity: 1;
         z-index: 0;
         pointer-events: none;
@@ -239,7 +239,7 @@
 
             & h1 {
                 text-align: center;
-                color: var(--light-1);
+                color: var(--text-color-1);
             }
 
             .roulette-group {
@@ -251,7 +251,7 @@
 
             .roulette-element {
                 position: absolute;
-                color: var(--primary-1);
+                color: var(--primary-color);
                 opacity: 0;
             }
         }
@@ -265,7 +265,7 @@
         position: relative;
         display: grid;
         place-items: center;
-        background-color: var(--dark-2);
+        background-color: var(--background-color);
 
         .max-width-wrapper {
             width: 100vw;
@@ -318,7 +318,7 @@
         top: -10rem;
         z-index: -1;
 
-        background-color: var(--dark-2);
+        background-color: var(--background-color);
         background-image: url("/noises/bg-01.webp");
         background-size: 1024px 1024px;
         background-repeat: repeat;

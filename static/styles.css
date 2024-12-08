@@ -1,44 +1,77 @@
-@font-face {
-  font-family: "BluuNext";
-  src: url("/rolebrew-site/fonts/BluuNext-Bold.otf") format("opentype");
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("/rolebrew-site/fonts/JetBrainsMono-Regular.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
+@import url("./fonts.css");
 :root {
   --light-1: #f4daba;
-  --light-1-transparent: #f4daba00;
-  --light-2: #debd95;
+  --light-1-10: rgba(244, 218, 186, 0.1);
+  --light-1-25: rgba(244, 218, 186, 0.25);
+  --light-1-50: rgba(244, 218, 186, 0.5);
+  --light-1-85: rgba(244, 218, 186, 0.85);
+  --light-1-100: #f4daba;
+  --light-2: #ddccb6;
+  --light-2-10: rgba(221, 204, 182, 0.1);
+  --light-2-25: rgba(221, 204, 182, 0.25);
+  --light-2-50: rgba(221, 204, 182, 0.5);
+  --light-2-85: rgba(221, 204, 182, 0.85);
+  --light-2-100: #ddccb6;
+  --light-3: #b6ab9e;
+  --light-3-10: rgba(182, 171, 158, 0.1);
+  --light-3-25: rgba(182, 171, 158, 0.25);
+  --light-3-50: rgba(182, 171, 158, 0.5);
+  --light-3-85: rgba(182, 171, 158, 0.85);
+  --light-3-100: #b6ab9e;
   --dark-0: #0f0f14;
-  --dark-0-transparent: #0f0f1400;
+  --dark-0-10: rgba(15, 15, 20, 0.1);
+  --dark-0-25: rgba(15, 15, 20, 0.25);
+  --dark-0-50: rgba(15, 15, 20, 0.5);
+  --dark-0-85: rgba(15, 15, 20, 0.85);
+  --dark-0-100: #0f0f14;
   --dark-1: #1e1e23;
-  --dark-1-transparent: #1e1e2300;
+  --dark-1-10: rgba(30, 30, 35, 0.1);
+  --dark-1-25: rgba(30, 30, 35, 0.25);
+  --dark-1-50: rgba(30, 30, 35, 0.5);
+  --dark-1-85: rgba(30, 30, 35, 0.85);
+  --dark-1-100: #1e1e23;
   --dark-2: #2a2a2e;
-  --dark-2-transparent: #2a2a2e00;
+  --dark-2-10: rgba(42, 42, 46, 0.1);
+  --dark-2-25: rgba(42, 42, 46, 0.25);
+  --dark-2-50: rgba(42, 42, 46, 0.5);
+  --dark-2-85: rgba(42, 42, 46, 0.85);
+  --dark-2-100: #2a2a2e;
   --dark-3: #3a3a3e;
-  --dark-3-transparent: #3a3a3e00;
+  --dark-3-10: rgba(58, 58, 62, 0.1);
+  --dark-3-25: rgba(58, 58, 62, 0.25);
+  --dark-3-50: rgba(58, 58, 62, 0.5);
+  --dark-3-85: rgba(58, 58, 62, 0.85);
+  --dark-3-100: #3a3a3e;
+  --dark-4: #3a3a3e;
+  --dark-4-10: rgba(58, 58, 62, 0.1);
+  --dark-4-25: rgba(58, 58, 62, 0.25);
+  --dark-4-50: rgba(58, 58, 62, 0.5);
+  --dark-4-85: rgba(58, 58, 62, 0.85);
+  --dark-4-100: #3a3a3e;
   --primary-1: #ffb230;
-  --primary-1-10: #ffb23022;
-  --primary-1-25: #ffb23044;
-  --primary-1-transparent: #ffb23000;
+  --primary-1-10: rgba(255, 178, 48, 0.1);
+  --primary-1-25: rgba(255, 178, 48, 0.25);
+  --primary-1-50: rgba(255, 178, 48, 0.5);
+  --primary-1-85: rgba(255, 178, 48, 0.85);
+  --primary-1-100: #ffb230;
   --primary-2: #b97d19;
-  --primary-2-transparent: #b97d1900;
+  --primary-2-10: rgba(185, 125, 25, 0.1);
+  --primary-2-25: rgba(185, 125, 25, 0.25);
+  --primary-2-50: rgba(185, 125, 25, 0.5);
+  --primary-2-85: rgba(185, 125, 25, 0.85);
+  --primary-2-100: #b97d19;
   --secondary-1: #3052ff;
-  --secondary-1-transparent: #3052ff00;
+  --secondary-1-10: rgba(48, 82, 255, 0.1);
+  --secondary-1-25: rgba(48, 82, 255, 0.25);
+  --secondary-1-50: rgba(48, 82, 255, 0.5);
+  --secondary-1-85: rgba(48, 82, 255, 0.85);
+  --secondary-1-100: #3052ff;
   --secondary-2: #31218e;
-  --secondary-2-transparent: #31218e00;
-  --primary-color: var(--primary-1);
-  --primary-color-transparent: var(--primary-1-transparent);
-  --background-color: var(--dark-2);
-  --background-color-2: var(--dark-3);
-  --background-color-0: var(--dark-2-transparent);
-  --background-color-alt: var(--light-1);
-  --text-color: var(--light-1);
+  --secondary-2-10: rgba(49, 33, 142, 0.1);
+  --secondary-2-25: rgba(49, 33, 142, 0.25);
+  --secondary-2-50: rgba(49, 33, 142, 0.5);
+  --secondary-2-85: rgba(49, 33, 142, 0.85);
+  --secondary-2-100: #31218e;
   --h1-size: 4rem;
   --h2-size: 2.5rem;
   --h3-size: 2rem;
@@ -60,6 +93,8 @@
   position: relative;
   scroll-behavior: smooth;
   font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.025rem;
   color: var(--text-color);
   line-height: 1.5;
 }
@@ -67,10 +102,86 @@
 body {
   width: 100vw;
   min-height: 100vh;
-  background-color: var(--dark-2);
+  background-color: var(--background-color);
   color: var(--text-color);
   display: flex;
   flex-direction: column;
+}
+body.dark {
+  --primary-color: #ffb230;
+  --primary-color-10: rgba(255, 178, 48, 0.1);
+  --primary-color-25: rgba(255, 178, 48, 0.25);
+  --primary-color-50: rgba(255, 178, 48, 0.5);
+  --primary-color-85: rgba(255, 178, 48, 0.85);
+  --primary-color-100: #ffb230;
+  --background-color: #1e1e23;
+  --background-color-10: rgba(30, 30, 35, 0.1);
+  --background-color-25: rgba(30, 30, 35, 0.25);
+  --background-color-50: rgba(30, 30, 35, 0.5);
+  --background-color-85: rgba(30, 30, 35, 0.85);
+  --background-color-100: #1e1e23;
+  --background-color-2: #2a2a2e;
+  --background-color-2-10: rgba(42, 42, 46, 0.1);
+  --background-color-2-25: rgba(42, 42, 46, 0.25);
+  --background-color-2-50: rgba(42, 42, 46, 0.5);
+  --background-color-2-85: rgba(42, 42, 46, 0.85);
+  --background-color-2-100: #2a2a2e;
+  --background-color-3: #3a3a3e;
+  --background-color-3-10: rgba(58, 58, 62, 0.1);
+  --background-color-3-25: rgba(58, 58, 62, 0.25);
+  --background-color-3-50: rgba(58, 58, 62, 0.5);
+  --background-color-3-85: rgba(58, 58, 62, 0.85);
+  --background-color-3-100: #3a3a3e;
+  --background-color-alt: #f4daba;
+  --background-color-alt-10: rgba(244, 218, 186, 0.1);
+  --background-color-alt-25: rgba(244, 218, 186, 0.25);
+  --background-color-alt-50: rgba(244, 218, 186, 0.5);
+  --background-color-alt-85: rgba(244, 218, 186, 0.85);
+  --background-color-alt-100: #f4daba;
+  --text-color: #f4daba;
+  --text-color-10: rgba(244, 218, 186, 0.1);
+  --text-color-25: rgba(244, 218, 186, 0.25);
+  --text-color-50: rgba(244, 218, 186, 0.5);
+  --text-color-85: rgba(244, 218, 186, 0.85);
+  --text-color-100: #f4daba;
+}
+body.light {
+  --primary-color: #b97d19;
+  --primary-color-10: rgba(185, 125, 25, 0.1);
+  --primary-color-25: rgba(185, 125, 25, 0.25);
+  --primary-color-50: rgba(185, 125, 25, 0.5);
+  --primary-color-85: rgba(185, 125, 25, 0.85);
+  --primary-color-100: #b97d19;
+  --background-color: #f4daba;
+  --background-color-10: rgba(244, 218, 186, 0.1);
+  --background-color-25: rgba(244, 218, 186, 0.25);
+  --background-color-50: rgba(244, 218, 186, 0.5);
+  --background-color-85: rgba(244, 218, 186, 0.85);
+  --background-color-100: #f4daba;
+  --background-color-2: #ddccb6;
+  --background-color-2-10: rgba(221, 204, 182, 0.1);
+  --background-color-2-25: rgba(221, 204, 182, 0.25);
+  --background-color-2-50: rgba(221, 204, 182, 0.5);
+  --background-color-2-85: rgba(221, 204, 182, 0.85);
+  --background-color-2-100: #ddccb6;
+  --background-color-3: #b6ab9e;
+  --background-color-3-10: rgba(182, 171, 158, 0.1);
+  --background-color-3-25: rgba(182, 171, 158, 0.25);
+  --background-color-3-50: rgba(182, 171, 158, 0.5);
+  --background-color-3-85: rgba(182, 171, 158, 0.85);
+  --background-color-3-100: #b6ab9e;
+  --background-color-alt: #1e1e23;
+  --background-color-alt-10: rgba(30, 30, 35, 0.1);
+  --background-color-alt-25: rgba(30, 30, 35, 0.25);
+  --background-color-alt-50: rgba(30, 30, 35, 0.5);
+  --background-color-alt-85: rgba(30, 30, 35, 0.85);
+  --background-color-alt-100: #1e1e23;
+  --text-color: #1e1e23;
+  --text-color-10: rgba(30, 30, 35, 0.1);
+  --text-color-25: rgba(30, 30, 35, 0.25);
+  --text-color-50: rgba(30, 30, 35, 0.5);
+  --text-color-85: rgba(30, 30, 35, 0.85);
+  --text-color-100: #1e1e23;
 }
 
 h1,
@@ -114,6 +225,57 @@ a:link {
 }
 a:active {
   text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  background: var(--background-color-2);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+table * {
+  position: relative;
+}
+table td,
+table th {
+  padding-left: 0.5rem;
+}
+table thead tr {
+  height: 2rem;
+}
+table thead tr th {
+  font-weight: bold;
+  background: var(--background-color-3);
+}
+table tbody tr {
+  height: 2rem;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table tbody tr td {
+  color: var(--text-color-85);
+}
+table td,
+table th {
+  text-align: left;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background: var(--text-color);
+  color: var(--background-color);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 250ms ease-out;
+}
+button.active {
+  background-color: var(--primary-color);
 }
 
 .placeholder {

@@ -3,7 +3,7 @@
     import { PUBLIC_BACKEND_SERVER } from "$env/static/public";
     import type { PageData } from "./$types";
     import SidebarAccordion from "./SidebarAccordion.svelte";
-    import { summaries, type SummaryKey } from "./summaries.svelte";
+    import { type SummaryKey } from "./summaries.svelte";
 
     let { data }: { data: PageData } = $props();
 
@@ -16,7 +16,7 @@
 <aside class="sidebar">
     {#snippet sidebarChildren(summariesSlug: SummaryKey)}
         <ul>
-            {#each summaries[summariesSlug] ?? [] as summary}
+            <!-- {#each summaries[summariesSlug] ?? [] as summary}
                 <a
                     class={summaryMatchesRoute(summary.slug, summariesSlug)
                         ? "active"
@@ -27,7 +27,7 @@
                         {summary.name}
                     </li>
                 </a>
-            {/each}
+            {/each} -->
         </ul>
     {/snippet}
 
@@ -44,7 +44,7 @@
         width: var(--sidebar-width);
         min-height: calc(100vh - var(--nav-height));
         height: 100%;
-        border-right: 0.125rem solid var(--primary-1-25);
+        border-right: 0.125rem solid var(--primary-color-25);
     }
 
     ul {
@@ -52,9 +52,9 @@
         padding: 0;
 
         a.active li {
-            background-color: var(--primary-1-10);
+            background-color: var(--primary-color-10);
             border-radius: 0.25rem 0 0 0.25rem;
-            color: var(--primary-1);
+            color: var(--primary-color);
         }
 
         li {
