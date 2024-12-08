@@ -12,7 +12,7 @@
     import { handleFetch, type FetchHandle } from "$lib/fetch.svelte";
     import { PUBLIC_BACKEND_SERVER } from "$env/static/public";
 
-    const { data, children }: { data: PageData; children: Snippet } = $props();
+    const { children }: { children: Snippet } = $props();
 
     let page: SummaryKey | null = $state(null);
     let pageFetchData: FetchHandle<Summary[]> | undefined = $state();
@@ -25,18 +25,12 @@
 
     $effect(() => {
         console.log("update");
-        if (page) {
-            switch (pageDataState) {
-                case "fetched":
-                case "loading":
-                    break;
-                default:
-                    console.log("fetching new data");
-                    pageFetchData = handleFetch<Summary[]>(
-                        PUBLIC_BACKEND_SERVER + summariesFetchLocation[page],
-                    );
-                    break;
-            }
+        if (page && pageDataState === "fetched") {
+            console.log("fetching new data");
+            pageFetchData = handleFetch<Summary[]>(
+                PUBLIC_BACKEND_SERVER + summariesFetchLocation[page],
+            );
+            console.log(pageFetchData);
         }
     });
 </script>
@@ -64,7 +58,7 @@
                 <tbody>
                     {#each pageDataValue ?? [] as summary}
                         <tr>
-                            <td>{summary.name}</td>
+                            <!-- <td>{summary.name}</td> -->
                             <!-- <td>{summary.slug}</td>
                             <td>{summary.description}</td> -->
                         </tr>
@@ -75,7 +69,7 @@
     {/if}
 </div>
 <div class="page-wrapper max-width-wrapper">
-    <Sidebar {data} />
+    <!-- <Sidebar {data} /> -->
     <div class="content">
         {@render children?.()}
     </div>

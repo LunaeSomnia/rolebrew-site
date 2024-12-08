@@ -10,7 +10,7 @@ export const summariesFetchLocation = {
 export function summaryFactory(summaryType: SummaryKey) {
     switch (summaryType) {
         case "ancestry":
-            
+
     }
 }
 
@@ -18,10 +18,16 @@ export class Summary {
     public id: string;
     public slug: string;
     public description: string;
+    public name: string;
+    [key: string]: any;
 
     constructor(id: string, slug: string, description: string) {
         this.id = id;
         this.slug = slug;
         this.description = description;
     }
+}
+
+export class AncestrySummary extends Summary {
+
 }

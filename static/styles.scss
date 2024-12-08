@@ -6,9 +6,9 @@
 $base-path: "/rolebrew-site";
 @import url("./fonts.css");
 
-$light-1: #f4daba;
-$light-2: #ddccb6;
-$light-3: #b6ab9e;
+$light-1: #f3e2ce;
+$light-2: #e0d5c7;
+$light-3: #beb8b1;
 $dark-0: #0f0f14;
 $dark-1: #1e1e23;
 $dark-2: #2a2a2e;
@@ -27,6 +27,7 @@ $secondary-2: #31218e;
 
 @mixin create-color-transparencies($color-name, $color-value) {
     --#{$color-name}: #{$color-value};
+
     @each $t in $transparencies {
         @include color-transparency($color-name, $color-name, $color-value, $t);
     }
@@ -34,6 +35,7 @@ $secondary-2: #31218e;
 
 @mixin target-create-color-transparencies($target-color-name, $color-name, $color-value) {
     --#{$target-color-name}: #{$color-value};
+
     @each $t in $transparencies {
         @include color-transparency($target-color-name, $color-name, $color-value, $t);
     }
@@ -207,6 +209,7 @@ table {
 
     tbody tr {
         height: 2rem;
+
         &:last-child {
             border: 0;
         }
@@ -266,6 +269,7 @@ button {
 }
 
 @keyframes placeholder-start {
+
     50%,
     0% {
         opacity: 0;
