@@ -1,7 +1,6 @@
 <script lang="ts">
     import type { Snippet } from "svelte";
     import type { PageData } from "./$types";
-    import Sidebar from "./Sidebar.svelte";
     import {
         ALL_SUMMARIES,
         summariesFetchLocation,
@@ -11,8 +10,10 @@
     import { capitalizeFirstLetter } from "$lib/utils";
     import { handleFetch, type FetchHandle } from "$lib/fetch.svelte";
     import { PUBLIC_BACKEND_SERVER } from "$env/static/public";
+    import { base } from "$app/paths";
+    import { goto } from "$app/navigation";
 
-    const { children }: { children: Snippet } = $props();
+    const { data, children }: { data: PageData; children: Snippet } = $props();
 
     let page: SummaryKey | null = $state(null);
     let pageFetchData: FetchHandle<Summary[]> | undefined = $state();
@@ -20,19 +21,37 @@
     let pageDataState = $derived(pageFetchData?.state);
 
     function selectIndexPage(pageKey: SummaryKey) {
+        const wasEqual = pageKey === page;
         page = pageKey;
+
+        if (!wasEqual) {
+            fetchNewData();
+        }
     }
 
-    $effect(() => {
-        console.log("update");
-        if (page && pageDataState === "fetched") {
-            console.log("fetching new data");
-            pageFetchData = handleFetch<Summary[]>(
-                PUBLIC_BACKEND_SERVER + summariesFetchLocation[page],
-            );
-            console.log(pageFetchData);
+    function fetchNewData() {
+        if (!page) {
+            console.error("Cant fetch null page");
+            return;
         }
-    });
+
+        console.log("fetching new data");
+        pageFetchData = handleFetch<Summary[]>(
+            PUBLIC_BACKEND_SERVER + summariesFetchLocation[page],
+        );
+        console.log(pageFetchData);
+    }
+
+    function tableIsActive(summary: Summary): boolean {
+        const ancestry = data.pathname.split("compendium/ancestry/")[1];
+        return ancestry === summary.slug;
+    }
+
+    function clickTableRow(summary: Summary) {
+        goto(`${base}/compendium/${page}/${summary.slug}#${summary.slug}`, {
+            noScroll: true,
+        });
+    }
 </script>
 
 <div class="compendium-index max-width-wrapper">
@@ -57,10 +76,10 @@
                 </thead>
                 <tbody>
                     {#each pageDataValue ?? [] as summary}
-                        <tr>
-                            <!-- <td>{summary.name}</td> -->
-                            <!-- <td>{summary.slug}</td>
-                            <td>{summary.description}</td> -->
+                        <tr onclick={() => clickTableRow(summary)}>
+                            <td class:active={tableIsActive(summary)}>
+                                {summary.name}
+                            </td>
                         </tr>
                     {/each}
                 </tbody>

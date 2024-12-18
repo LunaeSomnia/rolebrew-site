@@ -1,72 +1,83 @@
-@import url("./fonts.css");
 :root {
   --light-1: #f3e2ce;
+  --light-1-0: rgba(243, 226, 206, 0);
   --light-1-10: rgba(243, 226, 206, 0.1);
   --light-1-25: rgba(243, 226, 206, 0.25);
   --light-1-50: rgba(243, 226, 206, 0.5);
   --light-1-85: rgba(243, 226, 206, 0.85);
   --light-1-100: #f3e2ce;
   --light-2: #e0d5c7;
+  --light-2-0: rgba(224, 213, 199, 0);
   --light-2-10: rgba(224, 213, 199, 0.1);
   --light-2-25: rgba(224, 213, 199, 0.25);
   --light-2-50: rgba(224, 213, 199, 0.5);
   --light-2-85: rgba(224, 213, 199, 0.85);
   --light-2-100: #e0d5c7;
   --light-3: #beb8b1;
+  --light-3-0: rgba(190, 184, 177, 0);
   --light-3-10: rgba(190, 184, 177, 0.1);
   --light-3-25: rgba(190, 184, 177, 0.25);
   --light-3-50: rgba(190, 184, 177, 0.5);
   --light-3-85: rgba(190, 184, 177, 0.85);
   --light-3-100: #beb8b1;
   --dark-0: #0f0f14;
+  --dark-0-0: rgba(15, 15, 20, 0);
   --dark-0-10: rgba(15, 15, 20, 0.1);
   --dark-0-25: rgba(15, 15, 20, 0.25);
   --dark-0-50: rgba(15, 15, 20, 0.5);
   --dark-0-85: rgba(15, 15, 20, 0.85);
   --dark-0-100: #0f0f14;
   --dark-1: #1e1e23;
+  --dark-1-0: rgba(30, 30, 35, 0);
   --dark-1-10: rgba(30, 30, 35, 0.1);
   --dark-1-25: rgba(30, 30, 35, 0.25);
   --dark-1-50: rgba(30, 30, 35, 0.5);
   --dark-1-85: rgba(30, 30, 35, 0.85);
   --dark-1-100: #1e1e23;
   --dark-2: #2a2a2e;
+  --dark-2-0: rgba(42, 42, 46, 0);
   --dark-2-10: rgba(42, 42, 46, 0.1);
   --dark-2-25: rgba(42, 42, 46, 0.25);
   --dark-2-50: rgba(42, 42, 46, 0.5);
   --dark-2-85: rgba(42, 42, 46, 0.85);
   --dark-2-100: #2a2a2e;
   --dark-3: #3a3a3e;
+  --dark-3-0: rgba(58, 58, 62, 0);
   --dark-3-10: rgba(58, 58, 62, 0.1);
   --dark-3-25: rgba(58, 58, 62, 0.25);
   --dark-3-50: rgba(58, 58, 62, 0.5);
   --dark-3-85: rgba(58, 58, 62, 0.85);
   --dark-3-100: #3a3a3e;
   --dark-4: #3a3a3e;
+  --dark-4-0: rgba(58, 58, 62, 0);
   --dark-4-10: rgba(58, 58, 62, 0.1);
   --dark-4-25: rgba(58, 58, 62, 0.25);
   --dark-4-50: rgba(58, 58, 62, 0.5);
   --dark-4-85: rgba(58, 58, 62, 0.85);
   --dark-4-100: #3a3a3e;
   --primary-1: #ffb230;
+  --primary-1-0: rgba(255, 178, 48, 0);
   --primary-1-10: rgba(255, 178, 48, 0.1);
   --primary-1-25: rgba(255, 178, 48, 0.25);
   --primary-1-50: rgba(255, 178, 48, 0.5);
   --primary-1-85: rgba(255, 178, 48, 0.85);
   --primary-1-100: #ffb230;
   --primary-2: #b97d19;
+  --primary-2-0: rgba(185, 125, 25, 0);
   --primary-2-10: rgba(185, 125, 25, 0.1);
   --primary-2-25: rgba(185, 125, 25, 0.25);
   --primary-2-50: rgba(185, 125, 25, 0.5);
   --primary-2-85: rgba(185, 125, 25, 0.85);
   --primary-2-100: #b97d19;
   --secondary-1: #3052ff;
+  --secondary-1-0: rgba(48, 82, 255, 0);
   --secondary-1-10: rgba(48, 82, 255, 0.1);
   --secondary-1-25: rgba(48, 82, 255, 0.25);
   --secondary-1-50: rgba(48, 82, 255, 0.5);
   --secondary-1-85: rgba(48, 82, 255, 0.85);
   --secondary-1-100: #3052ff;
   --secondary-2: #31218e;
+  --secondary-2-0: rgba(49, 33, 142, 0);
   --secondary-2-10: rgba(49, 33, 142, 0.1);
   --secondary-2-25: rgba(49, 33, 142, 0.25);
   --secondary-2-50: rgba(49, 33, 142, 0.5);
@@ -106,39 +117,59 @@ body {
   color: var(--text-color);
   display: flex;
   flex-direction: column;
+  --horizontal-border-gradient: linear-gradient(
+          to right,
+          var(--primary-color-25) 0%,
+          var(--primary-color) 50%,
+          var(--primary-color-25) 100%
+      )
+      1;
 }
 body.dark {
   --primary-color: #ffb230;
+  --primary-color-0: rgba(255, 178, 48, 0);
   --primary-color-10: rgba(255, 178, 48, 0.1);
   --primary-color-25: rgba(255, 178, 48, 0.25);
   --primary-color-50: rgba(255, 178, 48, 0.5);
   --primary-color-85: rgba(255, 178, 48, 0.85);
   --primary-color-100: #ffb230;
+  --secondary-color: #3052ff;
+  --secondary-color-0: rgba(48, 82, 255, 0);
+  --secondary-color-10: rgba(48, 82, 255, 0.1);
+  --secondary-color-25: rgba(48, 82, 255, 0.25);
+  --secondary-color-50: rgba(48, 82, 255, 0.5);
+  --secondary-color-85: rgba(48, 82, 255, 0.85);
+  --secondary-color-100: #3052ff;
   --background-color: #1e1e23;
+  --background-color-0: rgba(30, 30, 35, 0);
   --background-color-10: rgba(30, 30, 35, 0.1);
   --background-color-25: rgba(30, 30, 35, 0.25);
   --background-color-50: rgba(30, 30, 35, 0.5);
   --background-color-85: rgba(30, 30, 35, 0.85);
   --background-color-100: #1e1e23;
   --background-color-2: #2a2a2e;
+  --background-color-2-0: rgba(42, 42, 46, 0);
   --background-color-2-10: rgba(42, 42, 46, 0.1);
   --background-color-2-25: rgba(42, 42, 46, 0.25);
   --background-color-2-50: rgba(42, 42, 46, 0.5);
   --background-color-2-85: rgba(42, 42, 46, 0.85);
   --background-color-2-100: #2a2a2e;
   --background-color-3: #3a3a3e;
+  --background-color-3-0: rgba(58, 58, 62, 0);
   --background-color-3-10: rgba(58, 58, 62, 0.1);
   --background-color-3-25: rgba(58, 58, 62, 0.25);
   --background-color-3-50: rgba(58, 58, 62, 0.5);
   --background-color-3-85: rgba(58, 58, 62, 0.85);
   --background-color-3-100: #3a3a3e;
   --background-color-alt: #f3e2ce;
+  --background-color-alt-0: rgba(243, 226, 206, 0);
   --background-color-alt-10: rgba(243, 226, 206, 0.1);
   --background-color-alt-25: rgba(243, 226, 206, 0.25);
   --background-color-alt-50: rgba(243, 226, 206, 0.5);
   --background-color-alt-85: rgba(243, 226, 206, 0.85);
   --background-color-alt-100: #f3e2ce;
   --text-color: #f3e2ce;
+  --text-color-0: rgba(243, 226, 206, 0);
   --text-color-10: rgba(243, 226, 206, 0.1);
   --text-color-25: rgba(243, 226, 206, 0.25);
   --text-color-50: rgba(243, 226, 206, 0.5);
@@ -147,36 +178,49 @@ body.dark {
 }
 body.light {
   --primary-color: #b97d19;
+  --primary-color-0: rgba(185, 125, 25, 0);
   --primary-color-10: rgba(185, 125, 25, 0.1);
   --primary-color-25: rgba(185, 125, 25, 0.25);
   --primary-color-50: rgba(185, 125, 25, 0.5);
   --primary-color-85: rgba(185, 125, 25, 0.85);
   --primary-color-100: #b97d19;
+  --secondary-color: #31218e;
+  --secondary-color-0: rgba(49, 33, 142, 0);
+  --secondary-color-10: rgba(49, 33, 142, 0.1);
+  --secondary-color-25: rgba(49, 33, 142, 0.25);
+  --secondary-color-50: rgba(49, 33, 142, 0.5);
+  --secondary-color-85: rgba(49, 33, 142, 0.85);
+  --secondary-color-100: #31218e;
   --background-color: #f3e2ce;
+  --background-color-0: rgba(243, 226, 206, 0);
   --background-color-10: rgba(243, 226, 206, 0.1);
   --background-color-25: rgba(243, 226, 206, 0.25);
   --background-color-50: rgba(243, 226, 206, 0.5);
   --background-color-85: rgba(243, 226, 206, 0.85);
   --background-color-100: #f3e2ce;
   --background-color-2: #e0d5c7;
+  --background-color-2-0: rgba(224, 213, 199, 0);
   --background-color-2-10: rgba(224, 213, 199, 0.1);
   --background-color-2-25: rgba(224, 213, 199, 0.25);
   --background-color-2-50: rgba(224, 213, 199, 0.5);
   --background-color-2-85: rgba(224, 213, 199, 0.85);
   --background-color-2-100: #e0d5c7;
   --background-color-3: #beb8b1;
+  --background-color-3-0: rgba(190, 184, 177, 0);
   --background-color-3-10: rgba(190, 184, 177, 0.1);
   --background-color-3-25: rgba(190, 184, 177, 0.25);
   --background-color-3-50: rgba(190, 184, 177, 0.5);
   --background-color-3-85: rgba(190, 184, 177, 0.85);
   --background-color-3-100: #beb8b1;
   --background-color-alt: #1e1e23;
+  --background-color-alt-0: rgba(30, 30, 35, 0);
   --background-color-alt-10: rgba(30, 30, 35, 0.1);
   --background-color-alt-25: rgba(30, 30, 35, 0.25);
   --background-color-alt-50: rgba(30, 30, 35, 0.5);
   --background-color-alt-85: rgba(30, 30, 35, 0.85);
   --background-color-alt-100: #1e1e23;
   --text-color: #1e1e23;
+  --text-color-0: rgba(30, 30, 35, 0);
   --text-color-10: rgba(30, 30, 35, 0.1);
   --text-color-25: rgba(30, 30, 35, 0.25);
   --text-color-50: rgba(30, 30, 35, 0.5);
@@ -241,7 +285,16 @@ table * {
 }
 table td,
 table th {
+  display: flex;
+  height: 2rem;
+  flex-direction: row;
+  align-items: center;
   padding-left: 0.5rem;
+  cursor: pointer;
+}
+table td.active,
+table th.active {
+  background-color: var(--primary-color-10);
 }
 table thead tr {
   height: 2rem;

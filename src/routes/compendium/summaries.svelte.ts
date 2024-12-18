@@ -1,3 +1,5 @@
+import type { AbilityBoost, Size, Vision } from "$lib/bindings";
+
 export const ALL_SUMMARIES = ['condition', 'ancestry'] as const;
 export type SummaryTuple = typeof ALL_SUMMARIES;
 export type SummaryKey = SummaryTuple[number]
@@ -21,13 +23,10 @@ export class Summary {
     public name: string;
     [key: string]: any;
 
-    constructor(id: string, slug: string, description: string) {
+    constructor(id: string, slug: string, description: string, name: string) {
         this.id = id;
         this.slug = slug;
         this.description = description;
+        this.name = name
     }
-}
-
-export class AncestrySummary extends Summary {
-
 }

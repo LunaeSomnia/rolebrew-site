@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-
     let {
         color = "var(--primary-color)",
         animationTime = "0.5s",
@@ -10,7 +8,7 @@
     let cropped: HTMLDivElement;
     let viewport: HTMLDivElement;
 
-    onMount(() => {
+    $effect(() => {
         viewport.style.height = cropped.clientHeight + "px";
         viewport.style.width = cropped.clientWidth + "px";
     });

@@ -1,5 +1,4 @@
 import { PUBLIC_BACKEND_SERVER } from '$env/static/public';
-import type { Ancestry, Summary } from '$lib/bindings';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ fetch, params }) => {

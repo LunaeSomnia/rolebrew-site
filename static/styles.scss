@@ -3,27 +3,9 @@
 @use "sass:list";
 @use "sass:math";
 
-$base-path: "/rolebrew-site";
-@import url("./fonts.css");
+@import "./colors";
 
-$light-1: #f3e2ce;
-$light-2: #e0d5c7;
-$light-3: #beb8b1;
-$dark-0: #0f0f14;
-$dark-1: #1e1e23;
-$dark-2: #2a2a2e;
-$dark-3: #3a3a3e;
-$dark-4: #3a3a3e;
-$primary-1: #ffb230;
-$primary-2: #b97d19;
-$secondary-1: #3052ff;
-$secondary-2: #31218e;
-// $primary-color: $primary-1;
-// $background-color: $dark-2;
-// $background-color-2: $dark-3;
-// $background-color-0: $dark-2-transparent;
-// $background-color-alt: $light-1;
-// $text-color: $light-1;
+$transparencies: 0, 10, 25, 50, 85, 100;
 
 @mixin create-color-transparencies($color-name, $color-value) {
     --#{$color-name}: #{$color-value};
@@ -45,8 +27,6 @@ $secondary-2: #31218e;
     --#{$target-color-name}-#{$transparency}: #{rgba($color-value, math.div($transparency, 100))};
 }
 
-$transparencies: 10, 25, 50, 85, 100;
-
 :root {
     @include create-color-transparencies("light-1", $light-1);
     @include create-color-transparencies("light-2", $light-2);
@@ -61,13 +41,7 @@ $transparencies: 10, 25, 50, 85, 100;
     @include create-color-transparencies("secondary-1", $secondary-1);
     @include create-color-transparencies("secondary-2", $secondary-2);
 
-    // --primary-color: $primary-color;
-    // --primary-color-transparent: $primary-color-transparent;
-    // --background-color: $background-color;
-    // --background-color-2: $background-color-2;
-    // --background-color-0: $background-color-0;
-    // --background-color-alt: $background-color-alt;
-    // --text-color: $text-color;
+    // derived variables
 
     // sizes
 
@@ -118,6 +92,7 @@ body {
 
     &.dark {
         @include target-create-color-transparencies("primary-color", "primary-1", $primary-1);
+        @include target-create-color-transparencies("secondary-color", "secondary-1", $secondary-1);
         @include target-create-color-transparencies("background-color", "dark-1", $dark-1);
         @include target-create-color-transparencies("background-color-2", "dark-2", $dark-2);
         @include target-create-color-transparencies("background-color-3", "dark-3", $dark-3);
@@ -127,12 +102,21 @@ body {
 
     &.light {
         @include target-create-color-transparencies("primary-color", "primary-2", $primary-2);
+        @include target-create-color-transparencies("secondary-color", "secondary-2", $secondary-2);
         @include target-create-color-transparencies("background-color", "light-1", $light-1);
         @include target-create-color-transparencies("background-color-2", "light-2", $light-2);
         @include target-create-color-transparencies("background-color-3", "light-3", $light-3);
         @include target-create-color-transparencies("background-color-alt", "dark-1", $dark-1);
         @include target-create-color-transparencies("text-color", "dark-1", $dark-1);
     }
+
+    --horizontal-border-gradient: linear-gradient(
+            to right,
+            var(--primary-color-25) 0%,
+            var(--primary-color) 50%,
+            var(--primary-color-25) 100%
+        )
+        1;
 }
 
 h1,
@@ -195,7 +179,16 @@ table {
 
     td,
     th {
+        display: flex;
+        height: 2rem;
+        flex-direction: row;
+        align-items: center;
         padding-left: 0.5rem;
+        cursor: pointer;
+
+        &.active {
+            background-color: var(--primary-color-10);
+        }
     }
 
     thead tr {
@@ -269,7 +262,6 @@ button {
 }
 
 @keyframes placeholder-start {
-
     50%,
     0% {
         opacity: 0;

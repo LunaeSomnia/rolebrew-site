@@ -1,13 +1,30 @@
 <script lang="ts">
     import { base } from "$app/paths";
+    import { IconType } from "$lib/icon";
     import FancyArrow from "$lib/svgs/FancyArrow.svelte";
     import Logo from "$lib/svgs/Logo.svelte";
     import RButton from "./RButton.svelte";
+    import TweenedIcon from "./TweenedIcon.svelte";
 
-    const alt = base === "/" ? "alt" : "";
+    let { pathname }: { pathname: string } = $props();
+
+    let alt = $state(false);
+    let useLightTheme = $state(false);
+
+    $effect(() => {
+        const path = pathname.replace(base, "");
+        alt = path === "/";
+        console.log(path, alt);
+    });
+
+    function clickThemeButton() {
+        document.body.classList.remove(useLightTheme ? "dark" : "light");
+        useLightTheme = !useLightTheme;
+        document.body.classList.add(useLightTheme ? "dark" : "light");
+    }
 </script>
 
-<nav class="nav-bar {alt}">
+<nav class="nav-bar" class:alt>
     <div class="max-width-wrapper">
         <nav class="nav-left">
             <a href="{base}/compendium">Compendium</a>
@@ -38,6 +55,17 @@
             </div>
         </nav>
         <nav class="nav-right">
+            <button class="theme-button" onclick={clickThemeButton}>
+                <TweenedIcon
+                    class="theme-button-svg"
+                    icons={new Array(
+                        IconType.Day,
+                        IconType.Night,
+                    ) as IconType[]}
+                    index={useLightTheme ? 0 : 1}
+                    color="var(--text-color)"
+                />
+            </button>
             <a href="{base}/login">Log In</a>
             <RButton text="Start your journey" />
         </nav>
@@ -49,39 +77,50 @@
         width: 100vw;
         height: var(--nav-height);
 
+        position: fixed;
         display: grid;
         place-items: center;
 
         z-index: 0;
-        background-color: var(--background-color);
+        background-color: var(--background-color-50);
         border-bottom: 1px;
         border-style: solid;
-        border-image: linear-gradient(
-                to right,
-                #ffb23044 0%,
-                #ffb230 50%,
-                #ffb23044 100%
-            )
-            1;
+        border-image: var(--horizontal-border-gradient);
 
-        &.alt {
-            position: absolute;
-        }
-
-        &.alt:before {
+        &:before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            backdrop-filter: blur(0.5rem);
+            z-index: -1;
+        }
+
+        &.alt {
+            border-bottom: 0;
+            background-color: unset;
             background: linear-gradient(
                 to bottom,
                 var(--background-color) 0%,
+                var(--background-color-50) 66%,
                 var(--background-color-0) 100%
             );
-            z-index: -1;
+            backdrop-filter: unset;
         }
+
+        &.alt:before {
+            backdrop-filter: blur(0.5rem);
+            mask: linear-gradient(to bottom, black, transparent 100%);
+        }
+    }
+
+    .theme-button {
+        display: flex;
+        padding: 0.5rem;
+        border-radius: 20rem;
+        background-color: var(--background-color-2);
     }
 
     .max-width-wrapper {
